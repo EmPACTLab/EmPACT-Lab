@@ -56,77 +56,184 @@
 	</header>
 
 	<!-- container -->
-	<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<h3 class="section-title">Get in Touch</h3>
-						<p>
-						If you are interested in our research and want to join EmPACT LAB, please feel free to drop an email. We welcome students, researchers, and collaborators who are passionate about embodied perception and interaction.
-						</p>
-						
-						<form class="form-light mt-20" role="form">
-							<div class="form-group">
-								<label>Name</label>
-								<input type="text" class="form-control" placeholder="Your name">
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Email</label>
-										<input type="email" class="form-control" placeholder="Email address">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Phone</label>
-										<input type="text" class="form-control" placeholder="Phone number">
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label>Subject</label>
-								<input type="text" class="form-control" placeholder="Subject">
-							</div>
-							<div class="form-group">
-								<label>Message</label>
-								<textarea class="form-control" id="message" placeholder="Write your message here..." style="height:100px;"></textarea>
-							</div>
-							<button type="submit" class="btn btn-two">Send message</button><p><br/></p>
-						</form>
-					</div>
-					<div class="col-md-6">
+	<div class="container" style="margin-top: 40px;">
+		<div class="row">
+			<div class="col-md-6">
+				<div style="background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%); border-radius: 12px; padding: 40px 35px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border: 1px solid #e8e8e8;">
+					<h3 style="color: #1a1a1a; font-weight: 600; margin-bottom: 10px;">Get in Touch</h3>
+					<div style="width: 50px; height: 3px; background: linear-gradient(to right, #dc2626, #ef4444); margin-bottom: 20px; border-radius: 2px;"></div>
+					<p style="color: #666; line-height: 1.7; margin-bottom: 25px;">
+						If you are interested in our research and want to join EmPACT LAB, please feel free to drop a message. We welcome students, researchers, and collaborators who are passionate about embodied perception and interaction.
+					</p>
+					
+					<!-- Google Sheets Integration Instructions:
+					1. Go to: https://script.google.com/
+					2. Create a new project
+					3. Paste the Apps Script code (provided in comments below)
+					4. Deploy as Web App
+					5. Replace SCRIPT_URL below with your deployment URL
+					-->
+					
+					<form id="contactForm" onsubmit="handleFormSubmit(event)" style="margin-top: 20px;">
+						<div class="form-group">
+							<label style="color: #333; font-weight: 600; margin-bottom: 5px; display: block;">Name <span style="color: #dc2626;">*</span></label>
+							<input type="text" name="name" class="form-control" placeholder="Your full name" required style="border: 1px solid #ddd; border-radius: 6px; padding: 12px 15px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#dc2626'; this.style.boxShadow='0 0 0 3px rgba(220,38,38,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+						</div>
 						<div class="row">
-							<div class="col-md-12">
-								<h3 class="section-title">Office Address</h3>
-								<div class="contact-info">
-									<h5>Address</h5>
-									<p>School of Electrical and Electronic Engineering<br>
-									Block S2.1, 50 Nanyang Avenue<br>
-									Nanyang Technological University<br>
-									Singapore</p>
-									
-									<h5>Email</h5>
-									<p>linwang@ntu.edu.sg</p>
-									
-									<h5>Phone</h5>
-									<p>(020) 8833-3696</p>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label style="color: #333; font-weight: 600; margin-bottom: 5px; display: block;">Email <span style="color: #dc2626;">*</span></label>
+									<input type="email" name="email" class="form-control" placeholder="your.email@example.com" required style="border: 1px solid #ddd; border-radius: 6px; padding: 12px 15px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#dc2626'; this.style.boxShadow='0 0 0 3px rgba(220,38,38,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label style="color: #333; font-weight: 600; margin-bottom: 5px; display: block;">Phone</label>
+									<input type="text" name="phone" class="form-control" placeholder="+65 1234 5678" style="border: 1px solid #ddd; border-radius: 6px; padding: 12px 15px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#dc2626'; this.style.boxShadow='0 0 0 3px rgba(220,38,38,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
 								</div>
 							</div>
 						</div>
-						<h3 class="section-title">Connect with Us</h3>
-						<p>
-						Follow us on social media to stay updated with our latest research, publications, and lab activities.
-						</p>
-						<div class="contact-info">
-							<h5>LinkedIn</h5>
-							<p><a href="https://www.linkedin.com/in/addison-lin-wang-62542b222/" target="_blank">https://www.linkedin.com/in/addison-lin-wang-62542b222/</a></p>
-							
-							<h5>GitHub</h5>
-							<p><a href="https://github.com/vlislab22" target="_blank">https://github.com/vlislab22</a></p>
-						</div>						
-					</div>
+						<div class="form-group">
+							<label style="color: #333; font-weight: 600; margin-bottom: 5px; display: block;">Subject <span style="color: #dc2626;">*</span></label>
+							<input type="text" name="subject" class="form-control" placeholder="What is this regarding?" required style="border: 1px solid #ddd; border-radius: 6px; padding: 12px 15px; font-size: 14px; transition: all 0.3s;" onfocus="this.style.borderColor='#dc2626'; this.style.boxShadow='0 0 0 3px rgba(220,38,38,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+						</div>
+						<div class="form-group">
+							<label style="color: #333; font-weight: 600; margin-bottom: 5px; display: block;">Message <span style="color: #dc2626;">*</span></label>
+							<textarea name="message" class="form-control" placeholder="Write your message here..." required style="height:120px; border: 1px solid #ddd; border-radius: 6px; padding: 12px 15px; font-size: 14px; resize: vertical; transition: all 0.3s;" onfocus="this.style.borderColor='#dc2626'; this.style.boxShadow='0 0 0 3px rgba(220,38,38,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'"></textarea>
+						</div>
+						<button type="submit" id="submitBtn" style="background: linear-gradient(135deg, #dc2626, #ef4444); color: white; border: none; padding: 14px 35px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 12px rgba(220,38,38,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(220,38,38,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(220,38,38,0.3)'">
+							<i class="fa fa-paper-plane" style="margin-right: 8px;"></i>Send Message
+						</button>
+						<div id="formMessage" style="margin-top: 15px; display: none;"></div>
+					</form>
 				</div>
 			</div>
+			
+			<div class="col-md-6">
+				<div style="background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%); border-radius: 12px; padding: 40px 35px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border: 1px solid #e8e8e8; margin-bottom: 25px;">
+					<h3 style="color: #1a1a1a; font-weight: 600; margin-bottom: 10px;">Office Address</h3>
+					<div style="width: 50px; height: 3px; background: linear-gradient(to right, #dc2626, #ef4444); margin-bottom: 20px; border-radius: 2px;"></div>
+					<div class="contact-info">
+						<div style="margin-bottom: 20px;">
+							<h5 style="color: #dc2626; font-weight: 600; margin-bottom: 8px;"><i class="fa fa-map-marker" style="margin-right: 8px;"></i>Address</h5>
+							<p style="color: #666; line-height: 1.7; margin-left: 24px;">School of Electrical and Electronic Engineering<br>
+							Block S2.1, 50 Nanyang Avenue<br>
+							Nanyang Technological University<br>
+							Singapore</p>
+						</div>
+						
+						<div style="margin-bottom: 20px;">
+							<h5 style="color: #dc2626; font-weight: 600; margin-bottom: 8px;"><i class="fa fa-envelope" style="margin-right: 8px;"></i>Email</h5>
+							<p style="color: #666; margin-left: 24px;"><a href="mailto:linwang@ntu.edu.sg" style="color: #666; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#666'">linwang@ntu.edu.sg</a></p>
+						</div>
+						
+						<div style="margin-bottom: 0;">
+							<h5 style="color: #dc2626; font-weight: 600; margin-bottom: 8px;"><i class="fa fa-phone" style="margin-right: 8px;"></i>Phone</h5>
+							<p style="color: #666; margin-left: 24px;">(020) 8833-3696</p>
+						</div>
+					</div>
+				</div>
+				
+				<div style="background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%); border-radius: 12px; padding: 40px 35px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border: 1px solid #e8e8e8;">
+					<h3 style="color: #1a1a1a; font-weight: 600; margin-bottom: 10px;">Connect with Us</h3>
+					<div style="width: 50px; height: 3px; background: linear-gradient(to right, #dc2626, #ef4444); margin-bottom: 20px; border-radius: 2px;"></div>
+					<p style="color: #666; line-height: 1.7; margin-bottom: 20px;">
+						Follow us on social media to stay updated with our latest research, publications, and lab activities.
+					</p>
+					<div class="contact-info">
+						<div style="margin-bottom: 15px;">
+							<h5 style="color: #dc2626; font-weight: 600; margin-bottom: 8px;"><i class="fa fa-linkedin" style="margin-right: 8px;"></i>LinkedIn</h5>
+							<p style="margin-left: 24px;"><a href="https://www.linkedin.com/in/addison-lin-wang-62542b222/" target="_blank" style="color: #666; text-decoration: none; font-size: 13px; transition: color 0.2s;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#666'">Addison Lin Wang</a></p>
+						</div>
+						
+						<div style="margin-bottom: 0;">
+							<h5 style="color: #dc2626; font-weight: 600; margin-bottom: 8px;"><i class="fa fa-github" style="margin-right: 8px;"></i>GitHub</h5>
+							<p style="margin-left: 24px;"><a href="https://github.com/vlislab22" target="_blank" style="color: #666; text-decoration: none; font-size: 13px; transition: color 0.2s;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#666'">vlislab22</a></p>
+						</div>
+					</div>						
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		// GOOGLE SHEETS INTEGRATION
+		// Replace this URL with your Google Apps Script Web App URL
+		const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGtVzNWB00dSw6w4KogSxv64Sym5DqzKVRWMoMgfZ6wAfeuNJqQ3TX_-l3IYMZOjA9/exec';
+		
+		async function handleFormSubmit(event) {
+			event.preventDefault();
+			
+			const submitBtn = document.getElementById('submitBtn');
+			const formMessage = document.getElementById('formMessage');
+			const form = document.getElementById('contactForm');
+			
+			// Disable button and show loading
+			submitBtn.disabled = true;
+			submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin" style="margin-right: 8px;"></i>Sending...';
+			
+			// Get form data
+			const formData = new FormData(form);
+			const data = {
+				name: formData.get('name'),
+				email: formData.get('email'),
+				phone: formData.get('phone') || 'Not provided',
+				subject: formData.get('subject'),
+				message: formData.get('message'),
+				timestamp: new Date().toISOString()
+			};
+			
+		try {
+			// Log data being sent (for debugging)
+			console.log('Sending data to Google Sheets:', data);
+			console.log('Script URL:', SCRIPT_URL);
+			
+			// Send data to Google Sheets via Google Apps Script
+			const response = await fetch(SCRIPT_URL, {
+				method: 'POST',
+				mode: 'no-cors',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data)
+			});
+			
+			console.log('Form submitted successfully');
+			
+			// Small delay for user feedback
+			await new Promise(resolve => setTimeout(resolve, 500));				// Show success message
+				formMessage.style.display = 'block';
+				formMessage.style.padding = '15px';
+				formMessage.style.borderRadius = '8px';
+				formMessage.style.backgroundColor = '#dcfce7';
+				formMessage.style.border = '1px solid #86efac';
+				formMessage.style.color = '#166534';
+				formMessage.innerHTML = '<i class="fa fa-check-circle" style="margin-right: 8px;"></i>Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+				
+				// Reset form
+				form.reset();
+				
+				// Hide message after 5 seconds
+				setTimeout(() => {
+					formMessage.style.display = 'none';
+				}, 5000);
+				
+			} catch (error) {
+				// Show error message
+				formMessage.style.display = 'block';
+				formMessage.style.padding = '15px';
+				formMessage.style.borderRadius = '8px';
+				formMessage.style.backgroundColor = '#fee2e2';
+				formMessage.style.border = '1px solid #fca5a5';
+				formMessage.style.color = '#991b1b';
+				formMessage.innerHTML = '<i class="fa fa-exclamation-circle" style="margin-right: 8px;"></i>Oops! Something went wrong. Please try again or email us directly.';
+			} finally {
+				// Re-enable button
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = '<i class="fa fa-paper-plane" style="margin-right: 8px;"></i>Send Message';
+			}
+		}
+	</script>
 	<!-- /container -->
 
 	

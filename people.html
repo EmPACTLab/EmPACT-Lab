@@ -41,45 +41,142 @@
 		</div>
 	</header>
 
+	<!-- 
+	=============================================
+	EASY EDIT PEOPLE DATABASE - Just edit the lists below!
+	=============================================
+	Add new people by adding entries to the appropriate category.
+	Image files should match the name exactly (case-sensitive).
+	-->
+
+	<script>
+		// People Database - EDIT THIS SECTION ONLY
+		const peopleData = {
+			phd: [
+				{ name: "ZHANG HAITIAN", role: "PhD", research: "Event-based Vision, Multi-modality", image: "ZHANG HAITIAN.png" },
+				{ name: "Liu Zinan", role: "PhD", research: "Embodied AI, Knowledge Distillation, Agentic Reasoning", image: "Liu Zinan.jpg" },
+				{ name: "Nguyen Duy Thai", role: "PhD", research: "3D Perception, Embodied World Model", image: "Nguyen Duy Thai.png" }
+			],
+			msc: [
+				{ name: "YU ZE", role: "MSc", research: "Embodied AI, Robot Learning", image: "YU ZE.jpg" },
+				{ name: "Chen Xuanyu", role: "MSc", research: "Humanoid Locomotion, VLA Models", image: "Chen Xuanyu.png" },
+				{ name: "CHEN HUITONG", role: "MSc", research: "Event Camera", image: "CHEN HUITONG.jpg" },
+				{ name: "Dong Ze", role: "MSc", research: "Embodied AI, Large Multimodal Models", image: "Dong Ze.jpg" },
+				{ name: "Mei Dengchen", role: "MSc", research: "Learning to see and understand the environment in the dark with humanoid robot", image: "Mei Dengchen.jpeg" },
+				{ name: "Shriram Damodaran", role: "M.Eng", research: "Robotics, 3D Computer Vision", image: "Shriram Damodaran.jpg" }
+
+			],
+			visiting: [
+				{ name: "Jongsung Lee", role: "Visiting PhD Student", research: "3D Scene Understanding, 360 Image-based Vision", image: "Jongsung Lee.jpg" }
+			],
+			fellows: [
+				{ name: "Namai", role: "Research Fellow", research: "PINN integration with RL and algorithm development", image: "Namai.jpeg" },
+				{ name: "Gu Zhihao", role: "Research Fellow", research: "Vision for Robotics, Computer Vision", image: "Gu Zhihao.jpg" }
+			]
+		};
+
+		// Function to generate team member HTML
+		function generatePeopleHTML() {
+			const container = document.getElementById('team-members-container');
+			let html = '';
+			
+			// PhD Students
+			if (peopleData.phd.length > 0) {
+				html += '<div class="col-md-12"><h3 style="margin-top: 30px; margin-bottom: 20px; color: #333;">PhD Students</h3></div>';
+				peopleData.phd.forEach(person => {
+					html += createPersonCard(person);
+				});
+			}
+			
+			// MSc Students
+			if (peopleData.msc.length > 0) {
+				html += '<div class="col-md-12"><h3 style="margin-top: 30px; margin-bottom: 20px; color: #333;">MSc Students</h3></div>';
+				peopleData.msc.forEach(person => {
+					html += createPersonCard(person);
+				});
+			}
+			
+			// Visiting PhD Students
+			if (peopleData.visiting.length > 0) {
+				html += '<div class="col-md-12"><h3 style="margin-top: 30px; margin-bottom: 20px; color: #333;">Visiting PhD Students</h3></div>';
+				peopleData.visiting.forEach(person => {
+					html += createPersonCard(person);
+				});
+			}
+			
+			// Research Fellows & Interns
+			if (peopleData.fellows.length > 0) {
+				html += '<div class="col-md-12"><h3 style="margin-top: 30px; margin-bottom: 20px; color: #333;">Research Fellows & Interns</h3></div>';
+				peopleData.fellows.forEach(person => {
+					html += createPersonCard(person);
+				});
+			}
+			
+			container.innerHTML = html;
+		}
+
+		// Create individual person card
+		function createPersonCard(person) {
+			return `
+				<div class="col-md-4">
+					<div class="team-member" style="background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%); border-radius: 12px; padding: 30px 20px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); transition: all 0.3s ease; text-align: center; border: 1px solid #e8e8e8;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.08)';">
+						<div style="width: 160px; height: 160px; margin: 0 auto 20px; overflow: hidden; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: relative;">
+							<img src="assets/People_Images/${person.image}" alt="${person.name}" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+						</div>
+						<h4 style="margin-bottom: 6px; color: #1a1a1a; font-weight: 600; font-size: 18px;">${person.name}</h4>
+						<div style="width: 40px; height: 3px; background: linear-gradient(to right, #dc2626, #ef4444); margin: 8px auto 12px; border-radius: 2px;"></div>
+						<p style="color: #dc2626; margin-bottom: 12px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${person.role}</p>
+						<p style="font-size: 13px; color: #666; line-height: 1.6; margin: 0;">${person.research}</p>
+					</div>
+				</div>
+			`;
+		}
+
+		// Load people when page loads
+		document.addEventListener('DOMContentLoaded', generatePeopleHTML);
+	</script>
+
 	<section class="container">
-		<div class="row">
+		<!-- Principal Investigator -->
+		<div class="row" style="margin-bottom: 40px;">
 			<div class="col-md-12">
-				<h2>Principal Investigator</h2>
-				<div class="row">
-					<div class="col-md-12">
-						<h3>Addison Lin Wang</h3>
-						<p>Assistant Professor, School of Electrical and Electronic Engineering, NTU Singapore</p>
-						<p>Dr. Wang leads the EmPACT Lab research in embodied perception and interaction, computer vision, and intelligent systems.</p>
+				<h2 style="border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 30px;">Principal Investigator</h2>
+			</div>
+			<div class="col-md-12">
+				<div style="background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%); border-radius: 12px; padding: 35px 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border: 1px solid #e8e8e8;">
+					<div class="row">
+						<div class="col-md-3 text-center">
+							<div style="width: 200px; height: 200px; margin: 0 auto; overflow: hidden; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+								<img src="assets/images/Prof.jpg" alt="Addison Lin Wang" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+							</div>
+						</div>
+						<div class="col-md-9">
+							<h3 style="margin-top: 0; color: #1a1a1a; font-weight: 600;">Addison Lin Wang</h3>
+							<div style="width: 50px; height: 3px; background: linear-gradient(to right, #dc2626, #ef4444); margin: 10px 0 15px 0; border-radius: 2px;"></div>
+							<p style="color: #dc2626; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 14px; margin-bottom: 8px;">Assistant Professor</p>
+							<p style="color: #555; margin-bottom: 15px;">School of Electrical and Electronic Engineering, NTU Singapore</p>
+							<p style="margin-top: 15px; color: #666; line-height: 1.7;">Dr. Wang leads the EmPACT Lab research in embodied perception and interaction, computer vision, and intelligent systems.</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row">
+		<!-- Team Members Section - Auto-generated -->
+		<div class="row" style="margin-bottom: 40px;">
 			<div class="col-md-12">
-				<h2>MPhil Students</h2>
-				<p>Our talented graduate students pursuing research in various areas of AI and robotics.</p>
+				<h2 style="border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 30px;">Team Members</h2>
+			</div>
+			<div id="team-members-container" class="row">
+				<!-- Team members will be automatically generated here -->
 			</div>
 		</div>
 
+		<!-- Join Us Section -->
 		<div class="row">
-			<div class="col-md-12">
-				<h2>Research Intern Students</h2>
-				<p>Undergraduate and visiting students contributing to our research projects.</p>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12">
-				<h2>Alumni</h2>
-				<p>Our former students and researchers who have gone on to pursue careers in academia and industry.</p>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<br><br>
+			<div class="col-md-12 text-center" style="margin-top: 30px; margin-bottom: 50px;">
 				<h3>Interested in joining our team?</h3>
+				<p style="margin-bottom: 20px;">We welcome students, researchers, and collaborators passionate about embodied AI and robotics.</p>
 				<a href="contact.html" class="btn btn-action btn-lg">Contact Us</a>
 			</div>
 		</div>

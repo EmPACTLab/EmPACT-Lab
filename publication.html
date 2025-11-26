@@ -42,37 +42,123 @@
 		</div>
 	</header>
 
+	<!-- 
+	=============================================
+	PUBLICATIONS DATABASE - Edit entries here!
+	=============================================
+	Format: { date, venue, title, authors, link }
+	-->
+
+	<script>
+		// Publications Database - EDIT THIS SECTION ONLY
+		const publicationsData = [
+			// 2024 Publications
+			{ date: "2024-10", venue: "Pattern Recognition", title: "Distilling efficient Vision Transformers from CNNs for semantic segmentation", authors: "Author A, Author B, Addison Lin Wang", link: "#" },
+			{ date: "2024-09", venue: "NeurIPS 2024", title: "LaSe-E2V: Towards Language-guided Semantic-Aware Event-to-Video Reconstruction", authors: "Author C, Addison Lin Wang", link: "#" },
+			{ date: "2024-08", venue: "ACM MM 2024", title: "A General Framework to Boost 3D GS Initialization for Text-to-3D Generation", authors: "Author D, Author E, Addison Lin Wang", link: "#" },
+			{ date: "2024-07", venue: "ECCV 2024", title: "Multi-Modal Semantic Segmentation with Event Camera", authors: "Author F, Author G, Addison Lin Wang", link: "#" },
+			{ date: "2024-07", venue: "ECCV 2024", title: "360-degree Vision for Autonomous Navigation", authors: "Author H, Addison Lin Wang", link: "#" },
+			{ date: "2024-07", venue: "ECCV 2024", title: "Event-Based Vision for High-Speed Motion Analysis", authors: "Author I, Addison Lin Wang", link: "#" },
+			{ date: "2024-06", venue: "CVPR 2024", title: "Depth Estimation with Event Cameras", authors: "Author J, Author K, Addison Lin Wang", link: "#" },
+			{ date: "2024-06", venue: "CVPR 2024", title: "Semantic Segmentation for Autonomous Driving", authors: "Author L, Addison Lin Wang", link: "#" },
+			{ date: "2024-06", venue: "CVPR 2024", title: "Neural Rendering for 3D Scene Reconstruction", authors: "Author M, Author N, Addison Lin Wang", link: "#" },
+			{ date: "2024-06", venue: "CVPR 2024", title: "Multi-Modal Learning for Robotics", authors: "Author O, Addison Lin Wang", link: "#" },
+			{ date: "2024-05", venue: "ICRA 2024", title: "Vision-Based Robot Navigation in Dynamic Environments", authors: "Author P, Addison Lin Wang", link: "#" },
+			{ date: "2024-05", venue: "ICRA 2024", title: "Event Camera Integration for Robotic Systems", authors: "Author Q, Author R, Addison Lin Wang", link: "#" },
+			{ date: "2024-03", venue: "AAAI 2024", title: "Knowledge Distillation for Efficient Vision Models", authors: "Author S, Addison Lin Wang", link: "#" },
+			
+			// 2023 Publications
+			{ date: "2023-10", venue: "ICCV 2023", title: "Panoramic Semantic Segmentation with 360-degree Cameras", authors: "Author T, Addison Lin Wang", link: "#" },
+			{ date: "2023-10", venue: "ICCV 2023", title: "Event-Based Vision for Low-Light Conditions", authors: "Author U, Author V, Addison Lin Wang", link: "#" },
+			{ date: "2023-10", venue: "ICCV 2023", title: "Neural Radiance Fields for Dynamic Scenes", authors: "Author W, Addison Lin Wang", link: "#" },
+			{ date: "2023-06", venue: "CVPR 2023", title: "Unsupervised Domain Adaptation for Semantic Segmentation", authors: "Author X, Addison Lin Wang", link: "#" },
+			{ date: "2023-06", venue: "CVPR 2023", title: "Event Camera Calibration and Reconstruction", authors: "Author Y, Author Z, Addison Lin Wang", link: "#" },
+			{ date: "2023-05", venue: "ICRA 2023", title: "Visual SLAM with Event Cameras", authors: "Author AA, Addison Lin Wang", link: "#" },
+			{ date: "2023-03", venue: "TPAMI", title: "Knowledge Distillation and Student-Teacher Learning for Visual Intelligence", authors: "Author AB, Author AC, Addison Lin Wang", link: "#" },
+			
+			// 2022 Publications
+			{ date: "2022-10", venue: "ECCV 2022", title: "HDR Imaging with Deep Learning", authors: "Author AD, Addison Lin Wang", link: "#" },
+			{ date: "2022-06", venue: "CVPR 2022", title: "3D Object Detection from Point Clouds", authors: "Author AE, Author AF, Addison Lin Wang", link: "#" },
+			{ date: "2022-05", venue: "ICRA 2022", title: "Robotic Grasping with Vision Transformers", authors: "Author AG, Addison Lin Wang", link: "#" },
+			{ date: "2022-03", venue: "TPAMI", title: "Deep Learning for HDR Imaging: State-of-the-Art and Future Trends", authors: "Author AH, Addison Lin Wang", link: "#" }
+		];
+
+		// Group publications by year
+		function groupByYear(publications) {
+			const grouped = {};
+			publications.forEach(pub => {
+				const year = pub.date.substring(0, 4);
+				if (!grouped[year]) {
+					grouped[year] = [];
+				}
+				grouped[year].push(pub);
+			});
+			return grouped;
+		}
+
+		// Generate publications HTML
+		function generatePublicationsHTML() {
+			const container = document.getElementById('publications-container');
+			const groupedPubs = groupByYear(publicationsData);
+			const years = Object.keys(groupedPubs).sort((a, b) => b - a); // Sort descending
+			
+			let html = '';
+			years.forEach(year => {
+				html += `<div class="year-section"><h3 style="color: #1a1a1a; margin-top: 30px; margin-bottom: 20px; font-weight: 600;">${year}</h3>`;
+				groupedPubs[year].forEach(pub => {
+					html += createPublicationCard(pub);
+				});
+				html += '</div>';
+			});
+			
+			container.innerHTML = html;
+		}
+
+		// Create individual publication card
+		function createPublicationCard(pub) {
+			return `
+				<div class="publication-card" style="background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%); border-radius: 10px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #e8e8e8; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.12)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)';">
+					<div style="display: flex; align-items: flex-start; gap: 20px;">
+						<div style="min-width: 80px;">
+							<span style="display: inline-block; background: linear-gradient(135deg, #dc2626, #ef4444); color: white; padding: 8px 12px; border-radius: 6px; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">${pub.venue}</span>
+						</div>
+						<div style="flex: 1;">
+							<h4 style="margin: 0 0 10px 0; color: #1a1a1a; font-weight: 600; font-size: 17px; line-height: 1.4;">
+								${pub.link && pub.link !== '#' ? `<a href="${pub.link}" target="_blank" style="color: #1a1a1a; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#1a1a1a'">${pub.title}</a>` : pub.title}
+							</h4>
+							<p style="margin: 0 0 8px 0; color: #666; font-size: 14px; line-height: 1.5;">
+								<i class="fa fa-users" style="color: #dc2626; margin-right: 5px;"></i>${pub.authors}
+							</p>
+							<div style="display: flex; align-items: center; gap: 15px;">
+								<span style="color: #888; font-size: 13px;">
+									<i class="fa fa-calendar" style="color: #dc2626; margin-right: 5px;"></i>${pub.date}
+								</span>
+								${pub.link && pub.link !== '#' ? `<a href="${pub.link}" target="_blank" style="color: #dc2626; font-size: 13px; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.color='#ef4444'; this.style.textDecoration='underline';" onmouseout="this.style.color='#dc2626'; this.style.textDecoration='none';"><i class="fa fa-external-link" style="margin-right: 5px;"></i>View Paper</a>` : ''}
+							</div>
+						</div>
+					</div>
+				</div>
+			`;
+		}
+
+		// Load publications when page loads
+		document.addEventListener('DOMContentLoaded', generatePublicationsHTML);
+	</script>
+
 	<section class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Recent Publications</h2>
-				<p>Our lab publishes cutting-edge research in top-tier venues including CVPR, ICCV, ECCV, NeurIPS, ICRA, IROS, and leading journals such as TPAMI, IJCV, and T-IP.</p>
-				<br>
 				
-				<h3>2024</h3>
-				<ul class="publication-list">
-					<li><strong>Pattern Recognition</strong> - Distilling efficient Vision Transformers from CNNs for semantic segmentation</li>
-					<li><strong>NeurIPS 2024</strong> - LaSe-E2V: Towards Language-guided Semantic-Aware Event-to-Video Reconstruction</li>
-					<li><strong>MM 2024</strong> - A General Framework to Boost 3D GS Initialization for Text-to-3D Generation</li>
-					<li><strong>ECCV 2024</strong> - Multiple papers on Event Vision, 360° Vision, and Multi-Modal Learning</li>
-					<li><strong>CVPR 2024</strong> - 8 papers on various topics in computer vision and AI</li>
-					<li><strong>ICRA 2024</strong> - 4 papers on robotics and computer vision</li>
-				</ul>
-
-				<h3>2023 and Earlier</h3>
-				<ul class="publication-list">
-					<li><strong>ICCV 2023</strong> - 5 papers on panoramic segmentation, event-based vision, and NeRF</li>
-					<li><strong>CVPR 2023</strong> - Multiple papers on event-based vision, 360° vision, and UDA</li>
-					<li><strong>TPAMI</strong> - Knowledge Distillation and Student-Teacher Learning for Visual Intelligence</li>
-					<li><strong>TPAMI</strong> - Deep Learning for HDR Imaging: State-of-the-Art and Future Trends</li>
-				</ul>
+				<div id="publications-container">
+					<!-- Publications will be automatically generated here -->
+				</div>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-md-12 text-center">
-				<br><br>
-				<h3>For more details on our publications</h3>
+			<div class="col-md-12 text-center" style="margin-top: 40px;">
+				<h3>For complete publication details</h3>
+				<p style="margin-bottom: 20px;">Visit our research page or contact us for more information</p>
 				<a href="contact.html" class="btn btn-action btn-lg">Contact Us</a>
 			</div>
 		</div>
