@@ -91,7 +91,9 @@
 				{ name: "Soumyaratna Debnath", role: "PhD", research: "Human Inspired Vision, Computer Vision", image: "Soumyaratna Debnath.jpg", linkedin: "https://www.linkedin.com/in/soumyaratna/" },
 				{ name: "Pham Tien Du", role: "PhD", research: "Computer Vision", image: "Pham Tien Du.jpg", linkedin: "https://www.linkedin.com/in/du-pham-3bb304186/" },
 				{ name: "Jongsung Lee", role: "Visiting PhD", research: "3D Scene Understanding, 360 Image-based Vision", image: "Jongsung Lee.jpg", linkedin: "" },
-				{ name: "Hao Shi", role: "Visiting PhD", research: "3D Vision, Robotics", image: "Hao Shi.jpg", linkedin: "" }
+				{ name: "Hao Shi", role: "Visiting PhD", research: "3D Vision, Robotics", image: "Hao Shi.jpg", linkedin: "" },
+				{ name: "Zeqin Yu", role: "Visiting Student", research: "Multimedia Forensics and Security", image: "Zeqin Yu.jpg", linkedin: "" },
+				{ name: "Jintao Guo", role: "Intern", research: "Machine Learning, Model Generalization", image: "Jintao Guo.jpg", linkedin: "https://www.linkedin.com/in/金涛-郭-36ba54392" }
 			],
 			msc: [
 				{ name: "YU ZE", role: "MSc", research: "Embodied AI, Robot Learning", image: "YU ZE.jpg", linkedin: "" },
@@ -103,19 +105,20 @@
 				{ name: "Wang Luoxin", role: "MSc", research: "Multimodal Signal Processing", image: "Wang Luoxin.jpg", linkedin: "https://www.linkedin.com/in/luoxin-wang-bb2a53252" },
 				{ name: "Xu Tianyi", role: "MSc", research: "Embodied AI, Multimodal Learning", image: "XU TIANYI.jpg", linkedin: "" }
 			],
-			interns: [
-				{ name: "Namai", role: "Research Intern", research: "PINN integration with RL and algorithm development", image: "Namai.jpeg", linkedin: "https://www.linkedin.com/in/namaichandra/" },
-				{ name: "Zeqin Yu", role: "Visiting Student", research: "Multimedia Forensics and Security", image: "Zeqin Yu.jpg", linkedin: "" },
-				{ name: "Jintao Guo", role: "Intern", research: "Machine Learning, Model Generalization", image: "Jintao Guo.jpg", linkedin: "https://www.linkedin.com/in/金涛-郭-36ba54392" },
-				{ name: "Lu Jingyi", role: "Intern", research: "Reinforcement Learning, MLLM, CV", image: "Lu Jingyi.jpg", linkedin: "" },
-				{ name: "XU Lehuai", role: "Intern", research: "Computer Vision", image: "XU Lehuai.jpg", linkedin: "" },
-				{ name: "Oscar Zhang", role: "Visiting Student", research: "Computer Vision", image: "Oscar Zhang.jpg", linkedin: "https://www.linkedin.com/in/泽同-张-060b78384" },
-				{ name: "Chi Zhang", role: "Research Intern", research: "Deep learning and Embodied AI", image: "Chi Zhang.jpg", linkedin: "" },
-				{ name: "Ke Xianrui", role: "Intern", research: "Physics for AI", image: "Ke Xianrui.jpg", linkedin: "" }
-			]
-		};
+		interns: [
+			{ name: "Namai", role: "Research Intern", research: "PINN integration with RL and algorithm development", image: "Namai.jpeg", linkedin: "https://www.linkedin.com/in/namaichandra/" },
+			{ name: "Lu Jingyi", role: "Intern", research: "Reinforcement Learning, MLLM, CV", image: "Lu Jingyi.jpg", linkedin: "" },
+			{ name: "XU Lehuai", role: "Intern", research: "Computer Vision", image: "XU Lehuai.jpg", linkedin: "" },
+			{ name: "Oscar Zhang", role: "Visiting Student", research: "Computer Vision", image: "Oscar Zhang.jpg", linkedin: "https://www.linkedin.com/in/泽同-张-060b78384" },
+			{ name: "Chi Zhang", role: "Research Intern", research: "Deep learning and Embodied AI", image: "Chi Zhang.jpg", linkedin: "" },
+			{ name: "Ke Xianrui", role: "Intern", research: "Physics for AI", image: "Ke Xianrui.jpg", linkedin: "" }
+		],
+		alumni: [
+			{ name: "Li Haoran", role: "Visiting PhD student", research: "3D vision", image: "Li Haoran.jpg", linkedin: "" }
+		]
+	};
 
-		// Function to generate team member HTML
+	// Function to generate team member HTML
 		function generatePeopleHTML() {
 			const container = document.getElementById('team-members-container');
 			let html = '';
@@ -144,10 +147,18 @@
 				});
 			}
 			
-			// Interns
+			// Interns and UG Students
 			if (peopleData.interns && peopleData.interns.length > 0) {
-				html += '<div class="col-md-12"><h3 style="margin-top: 30px; margin-bottom: 20px; color: #333;">Interns</h3></div>';
+				html += '<div class="col-md-12"><h3 style="margin-top: 30px; margin-bottom: 20px; color: #333;">Interns and UG Students</h3></div>';
 				peopleData.interns.forEach(person => {
+					html += createPersonCard(person);
+				});
+			}
+			
+			// Alumni
+			if (peopleData.alumni && peopleData.alumni.length > 0) {
+				html += '<div class="col-md-12"><h3 style="margin-top: 30px; margin-bottom: 20px; color: #333;">Alumni</h3></div>';
+				peopleData.alumni.forEach(person => {
 					html += createPersonCard(person);
 				});
 			}
