@@ -33,6 +33,23 @@
 			padding-right: 15px;
 		}
 		
+		/* Fix member images to prevent overflow */
+		.member-img {
+			overflow: hidden;
+			width: 100%;
+			margin: 0 auto 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.member-img img {
+			max-width: 90%;
+			width: auto;
+			height: auto;
+			display: block;
+			margin: 0 auto;
+		}
+		
 		/* Mobile responsive: 2 people per row on phones */
 		@media (max-width: 767px) {
 			#team-members-container {
@@ -52,7 +69,7 @@
 			/* Adjust card styling for mobile */
 			.team-member {
 				margin-bottom: 15px !important;
-				padding: 20px 15px !important;
+				padding: 15px 10px !important;
 			}
 			.team-member h4 {
 				font-size: 16px !important;
@@ -60,17 +77,13 @@
 			.team-member p {
 				font-size: 12px !important;
 			}
-			/* Fix image overflow on mobile */
+			/* Constrain images better on mobile */
 			.member-img {
-				overflow: hidden !important;
-				width: 100%;
-				padding: 0 10px;
+				padding: 0 15px;
+				margin-bottom: 10px;
 			}
 			.member-img img {
-				width: 100% !important;
-				height: auto !important;
-				max-width: 100% !important;
-				display: block;
+				max-width: 85%;
 			}
 		}
 		
@@ -80,6 +93,14 @@
 				flex: 0 0 33.3333%;
 				max-width: 33.3333%;
 			}
+		}
+		
+		/* Hide navbar on scroll down, show on scroll up */
+		.navbar-fixed-top {
+			transition: transform 0.3s ease-in-out;
+		}
+		.navbar-hidden {
+			transform: translateY(-100%);
 		}
 	</style>
 </head>
@@ -329,5 +350,32 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="assets/js/custom.js"></script>
+	
+	<!-- Navbar hide on scroll down, show on scroll up -->
+	<script>
+	(function() {
+		var lastScrollTop = 0;
+		var navbar = document.querySelector('.navbar-fixed-top');
+		var delta = 5;
+		var navbarHeight = navbar.offsetHeight;
+
+		window.addEventListener('scroll', function() {
+			var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+			
+			// Make sure they scroll more than delta
+			if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
+			
+			// If scrolled down and past the navbar, add the hidden class
+			if (scrollTop > lastScrollTop && scrollTop > navbarHeight) {
+				navbar.classList.add('navbar-hidden');
+			} else {
+				// Scrolling up
+				navbar.classList.remove('navbar-hidden');
+			}
+			
+			lastScrollTop = scrollTop;
+		});
+	})();
+	</script>
 </body>
 </html>
