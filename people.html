@@ -20,7 +20,7 @@
 		}
 		#team-members-container .col-md-4 {
 			float: none;           /* override Bootstrap float */
-			flex: 0 0 25%;         /* 4 per row */
+			flex: 0 0 25%;         /* 4 per row on desktop */
 			max-width: 25%;
 			padding-left: 15px;
 			padding-right: 15px;
@@ -31,6 +31,43 @@
 			max-width: 100%;
 			padding-left: 15px;
 			padding-right: 15px;
+		}
+		
+		/* Mobile responsive: 2 people per row on phones */
+		@media (max-width: 767px) {
+			#team-members-container {
+				margin-left: 0;
+				margin-right: 0;
+			}
+			#team-members-container .col-md-4 {
+				flex: 0 0 50%;
+				max-width: 50%;
+				padding-left: 8px;
+				padding-right: 8px;
+			}
+			#team-members-container .col-md-12 {
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			/* Adjust card styling for mobile */
+			.team-member {
+				margin-bottom: 15px !important;
+				padding: 20px 15px !important;
+			}
+			.team-member h4 {
+				font-size: 16px !important;
+			}
+			.team-member p {
+				font-size: 12px !important;
+			}
+		}
+		
+		/* Tablet: 3 people per row */
+		@media (min-width: 768px) and (max-width: 991px) {
+			#team-members-container .col-md-4 {
+				flex: 0 0 33.3333%;
+				max-width: 33.3333%;
+			}
 		}
 	</style>
 </head>
