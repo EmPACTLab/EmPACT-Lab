@@ -19,6 +19,60 @@
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
+	
+	<!-- Custom Mobile Navbar Fix -->
+	<style>
+		/* Custom hamburger menu with red bars */
+		@media (max-width: 767px) {
+			.navbar-toggle {
+				display: block !important;
+				position: relative !important;
+				z-index: 10000 !important;
+				background-color: transparent !important;
+				border: none !important;
+				padding: 12px !important;
+				margin: 10px 15px !important;
+				float: right !important;
+				cursor: pointer !important;
+				pointer-events: auto !important;
+				width: 50px;
+				height: 50px;
+			}
+			.navbar-toggle .icon-bar {
+				display: block !important;
+				width: 30px !important;
+				height: 4px !important;
+				background-color: #dc2626 !important;
+				border-radius: 2px !important;
+				margin: 5px 0 !important;
+				transition: all 0.3s ease !important;
+			}
+			.navbar-toggle:hover .icon-bar {
+				background-color: #991b1b !important;
+			}
+			.navbar-collapse {
+				max-height: none !important;
+				overflow: visible !important;
+				background-color: #fff !important;
+				border-top: 2px solid #dc2626 !important;
+				transform-origin: top;
+				transition: transform 0.3s ease-out, opacity 0.3s ease-out !important;
+			}
+			.navbar-collapse.collapse {
+				display: block !important;
+				transform: scaleY(0) !important;
+				opacity: 0 !important;
+				max-height: 0 !important;
+				overflow: hidden !important;
+			}
+			.navbar-collapse.collapse.in {
+				transform: scaleY(1) !important;
+				opacity: 1 !important;
+				max-height: 500px !important;
+				overflow-y: visible !important;
+			}
+		}
+	</style>
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -634,6 +688,46 @@
 				};
 			});
 		}
+	})();
+	</script>
+	
+	<!-- Custom Mobile Navbar Script -->
+	<script>
+	(function() {
+		var isToggling = false;
+		
+		function toggleMenu() {
+			if (isToggling) return;
+			isToggling = true;
+			
+			var collapse = document.getElementById('navbar-collapse-main');
+			if (collapse.classList.contains('in')) {
+				collapse.classList.remove('in');
+			} else {
+				collapse.classList.add('in');
+			}
+			
+			setTimeout(function() { isToggling = false; }, 300);
+		}
+		
+		window.addEventListener('load', function() {
+			var toggleBtn = document.querySelector('.navbar-toggle');
+			if (toggleBtn) {
+				toggleBtn.addEventListener('click', toggleMenu);
+				toggleBtn.addEventListener('touchend', function(e) {
+					e.preventDefault();
+					toggleMenu();
+				});
+			}
+			
+			// Close menu when clicking on links
+			var navLinks = document.querySelectorAll('.navbar-collapse a');
+			for (var i = 0; i < navLinks.length; i++) {
+				navLinks[i].addEventListener('click', function() {
+					document.getElementById('navbar-collapse-main').classList.remove('in');
+				});
+			}
+		});
 	})();
 	</script>
 </body>
