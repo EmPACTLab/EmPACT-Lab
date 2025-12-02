@@ -94,18 +94,10 @@
 				max-width: 33.3333%;
 			}
 		}
-		
-		/* Hide navbar on scroll down, show on scroll up */
-		.navbar-fixed-top {
-			transition: transform 0.3s ease-in-out;
-		}
-		.navbar-hidden {
-			transform: translateY(-100%);
-		}
 	</style>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main" aria-expanded="false">
@@ -350,32 +342,15 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="assets/js/custom.js"></script>
-	
-	<!-- Navbar hide on scroll down, show on scroll up -->
 	<script>
-	(function() {
-		var lastScrollTop = 0;
-		var navbar = document.querySelector('.navbar-fixed-top');
-		var delta = 5;
-		var navbarHeight = navbar.offsetHeight;
-
-		window.addEventListener('scroll', function() {
-			var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-			
-			// Make sure they scroll more than delta
-			if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
-			
-			// If scrolled down and past the navbar, add the hidden class
-			if (scrollTop > lastScrollTop && scrollTop > navbarHeight) {
-				navbar.classList.add('navbar-hidden');
-			} else {
-				// Scrolling up
-				navbar.classList.remove('navbar-hidden');
-			}
-			
-			lastScrollTop = scrollTop;
+	// Ensure mobile navbar toggle works
+	jQuery(document).ready(function($) {
+		$('.navbar-toggle').on('click', function(e) {
+			e.preventDefault();
+			var target = $(this).attr('data-target');
+			$(target).collapse('toggle');
 		});
-	})();
+	});
 	</script>
 </body>
 </html>

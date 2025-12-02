@@ -22,7 +22,7 @@
 
 <body>
 	<!-- Fixed navbar -->
-	<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
@@ -237,5 +237,15 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="assets/js/custom.js"></script>
+	<script>
+	// Ensure mobile navbar toggle works
+	jQuery(document).ready(function($) {
+		$('.navbar-toggle').on('click', function(e) {
+			e.preventDefault();
+			var target = $(this).attr('data-target');
+			$(target).collapse('toggle');
+		});
+	});
+	</script>
 </body>
 </html>
