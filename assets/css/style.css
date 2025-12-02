@@ -30,6 +30,10 @@ h2 {
 }
 .navbar-toggle {
 	background-color: rgba(0, 0, 0, 0.89);
+	position: relative;
+	z-index: 9999;
+	pointer-events: auto;
+	cursor: pointer;
 }
 .navbar-nav>li>a{
 	padding-top: 12px;
