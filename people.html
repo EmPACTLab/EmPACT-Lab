@@ -60,6 +60,18 @@
 			.team-member p {
 				font-size: 12px !important;
 			}
+			/* Fix image overflow on mobile */
+			.member-img {
+				overflow: hidden !important;
+				width: 100%;
+				padding: 0 10px;
+			}
+			.member-img img {
+				width: 100% !important;
+				height: auto !important;
+				max-width: 100% !important;
+				display: block;
+			}
 		}
 		
 		/* Tablet: 3 people per row */
@@ -72,15 +84,18 @@
 	</style>
 </head>
 <body>
-	<div class="navbar navbar-inverse">
+	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="EmPACT Lab"></a>
 			</div>
-			<div class="navbar-collapse collapse">
+			<div class="collapse navbar-collapse" id="navbar-collapse-main">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="research.html">Research</a></li>
