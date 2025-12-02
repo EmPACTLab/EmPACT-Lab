@@ -37,7 +37,8 @@ jQuery(document).ready(function ($) {
             }, "slow");
             return false;
         });
-        $('.navbar-inverse').on('click', 'li a', function () {
+        // Close mobile menu when clicking on a link (not the toggle button)
+        $('.navbar-inverse').on('click', 'ul.nav li a', function () {
             $('.navbar-inverse .in').addClass('collapse').removeClass('in').css('height', '1px');
         });
         $('#filter a').click(function () {
