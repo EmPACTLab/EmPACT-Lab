@@ -45,16 +45,21 @@
 				overflow: visible !important;
 				background-color: #fff !important;
 				border-top: 2px solid #dc2626 !important;
-			}
-			.navbar-collapse.in {
-				display: block !important;
-				overflow-y: visible !important;
+				transform-origin: top;
+				transition: transform 0.3s ease-out, opacity 0.3s ease-out !important;
 			}
 			.navbar-collapse.collapse {
-				display: none !important;
+				display: block !important;
+				transform: scaleY(0) !important;
+				opacity: 0 !important;
+				max-height: 0 !important;
+				overflow: hidden !important;
 			}
 			.navbar-collapse.collapse.in {
-				display: block !important;
+				transform: scaleY(1) !important;
+				opacity: 1 !important;
+				max-height: 500px !important;
+				overflow-y: visible !important;
 			}
 		}
 	</style>
