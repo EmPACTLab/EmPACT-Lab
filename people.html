@@ -95,6 +95,49 @@
 			}
 		}
 	</style>
+	
+	<!-- Custom Mobile Navbar Fix -->
+	<style>
+		/* Force mobile navbar to work */
+		@media (max-width: 767px) {
+			.navbar-toggle {
+				display: block !important;
+				position: relative !important;
+				z-index: 10000 !important;
+				background-color: #333 !important;
+				border: 2px solid #fff !important;
+				padding: 9px 10px !important;
+				margin: 8px 15px 8px 0 !important;
+				float: right !important;
+				cursor: pointer !important;
+				pointer-events: auto !important;
+			}
+			.navbar-toggle .icon-bar {
+				display: block !important;
+				width: 22px !important;
+				height: 2px !important;
+				background-color: #fff !important;
+				margin-top: 4px !important;
+			}
+			.navbar-toggle .icon-bar:first-child {
+				margin-top: 0 !important;
+			}
+			.navbar-collapse {
+				max-height: none !important;
+				overflow: visible !important;
+			}
+			.navbar-collapse.in {
+				display: block !important;
+				overflow-y: visible !important;
+			}
+			.navbar-collapse.collapse {
+				display: none !important;
+			}
+			.navbar-collapse.collapse.in {
+				display: block !important;
+			}
+		}
+	</style>
 </head>
 <body>
 	<div class="navbar navbar-inverse">
@@ -342,5 +385,26 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="assets/js/custom.js"></script>
+	
+	<!-- Custom Mobile Navbar Script -->
+	<script>
+	jQuery(document).ready(function($) {
+		// Simple mobile navbar toggle
+		$('.navbar-toggle').unbind().on('click touchstart', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			var target = $('#navbar-collapse-main');
+			if (target.hasClass('in')) {
+				target.removeClass('in');
+			} else {
+				target.addClass('in');
+			}
+		});
+		// Close menu when clicking on a link
+		$('.navbar-collapse a').on('click', function() {
+			$('#navbar-collapse-main').removeClass('in');
+		});
+	});
+	</script>
 </body>
 </html>
