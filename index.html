@@ -620,6 +620,7 @@
 				if (images.length === 0) {
 					// Fallback: use hardcoded list if directory listing fails
 					return loadGallery([
+						'assets/Lab_Images/Image.jpeg',
 						'assets/Lab_Images/pic1.jpg',
 						'assets/Lab_Images/pic2.jpg',
 						'assets/Lab_Images/pic3.jpg',
@@ -637,6 +638,7 @@
 				// Fallback: use hardcoded list if fetch fails
 				console.warn('Could not auto-detect images, using fallback list', err);
 				loadGallery([
+					'assets/Lab_Images/Image.jpeg',
 					'assets/Lab_Images/pic1.jpg',
 					'assets/Lab_Images/pic2.jpg',
 					'assets/Lab_Images/pic3.jpg',
