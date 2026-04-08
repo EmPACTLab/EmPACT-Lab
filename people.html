@@ -208,16 +208,16 @@
 				{ name: "Gu Zhihao", role: "Research Fellow", research: "Vision for Robotics, Computer Vision", image: "Gu Zhihao.jpg", linkedin: "https://orcid.org/0000-0003-1506-1087", website: "", education: "PHD, Shanghai Jiao Tong University, China" },
 				{ name: "Liu Mohan", role: "Research Associate", research: "Embodied AI, Robot Learning, Multimodal Learning", image: "Liu Mohan.jpg", linkedin: "https://www.linkedin.com/in/mohan%EF%BC%88lester%EF%BC%89-liu-a26a5a286/", website: "", education: "MSc, National University of Singapore" }
 			],
-		phd: [
+			phd: [
 				{ name: "Liu Zinan", role: "PhD", research: "Embodied AI, Computer Vision, Agentic Reasoning", image: "Liu Zinan.jpg", linkedin: "https://www.linkedin.com/in/zinan-liu-650119203", website: "https://github.com/NKLiuZN", education: "B.Eng & MSc, Nanyang Technological University" },
 				{ name: "ZHANG HAITIAN", role: "PhD", research: "Event-based Vision. Multi-modality", image: "ZHANG HAITIAN.png", linkedin: "", website: "https://github.com/Hatins", education: "Bachelor and Master from Wuhan University" },
 				{ name: "Nguyen Duy Thai", role: "PhD", research: "3D Perception, Embodied World Model", image: "Nguyen Duy Thai.png", linkedin: "https://www.linkedin.com/in/thai-nd", website: "", education: "BSc, Hanoi University of Science and Technology" },
 				{ name: "Soumyaratna Debnath", role: "PhD", research: "Human Inspired Vision, Computer Vision", image: "Soumyaratna Debnath.jpg", linkedin: "https://www.linkedin.com/in/soumyaratna/", website: "https://soumyaratnadebnath.github.io", education: "MTech (CSE), Indian Institute of Technology Gandhinagar, India" },
 				{ name: "Pham Tien Du", role: "PhD", research: "Computer Vision", image: "Pham Tien Du.jpg", linkedin: "https://www.linkedin.com/in/du-pham-3bb304186/", website: "", education: "BSc, Vietnam National University Hanoi" },
 				{ name: "Hao Shi", role: "Visiting PhD", research: "3D Vision, Robotics", image: "Hao Shi.jpg", linkedin: "", website: "", education: "" },
-				{name: "Mao Kaimin",role: "PhD",research: "Embodied AI, Robotics",image: "Kaimin Mao.jpg",linkedin: "https://www.linkedin.com/in/kaimin-mao-b515a6311",website: "https://github.com/stephenmao0927",education: "BEng, Xi'an Jiaotong University; MSc, Nanyang Technological University"},
-				],
-		master: [
+				{name: "Mao Kaimin",role: "PhD",research: "Embodied AI, Robotics",image: "Kaimin Mao.jpg",linkedin: "https://www.linkedin.com/in/kaimin-mao-b515a6311",website: "https://github.com/stephenmao0927",education: "BEng, Xi'an Jiaotong University; MSc, Nanyang Technological University"}
+		],
+		msc: [
 				{ name: "Chen Xuanyu", role: "MSc", research: "Humanoid Locomotion, VLA Models", image: "Chen Xuanyu.png", linkedin: "", website: "", education: "" },
 				{ name: "CHEN HUITONG", role: "MSc", research: "Event Camera", image: "CHEN HUITONG.jpg", linkedin: "", website: "", education: "" },
 				{ name: "Dong Ze", role: "MSc", research: "Embodied AI, Large Multimodal Models", image: "Dong Ze.jpg", linkedin: "", website: "", education: "" },
@@ -264,7 +264,7 @@
 			}
 			
 			// Master Students
-			if (peopleData.msc && peopleData.master.length > 0) {
+			if (peopleData.msc && peopleData.msc.length > 0) {
 				html += '<div class="col-md-12"><h3 style="margin-top: 30px; margin-bottom: 20px; color: #333;">Master Students</h3></div>';
 				peopleData.msc.forEach(person => {
 					html += createPersonCard(person);
@@ -459,3 +459,4 @@
 	</script>
 </body>
 </html>
+
