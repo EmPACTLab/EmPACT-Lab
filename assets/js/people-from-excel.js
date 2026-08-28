@@ -32,7 +32,7 @@
     function imagePath(image) {
         const filename = text(image);
         if (/^https?:\/\//i.test(filename)) return filename;
-        return 'assets/images/Prof.jpg';
+        return 'assets/essential_images/Prof.jpg';
     }
 
     function socialLink(url, icon, label, personName) {

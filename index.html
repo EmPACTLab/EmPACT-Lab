@@ -101,7 +101,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.html">
-					<img src="assets/images/empact_logo.png" alt="EmPACT Lab"></a>
+					<img src="assets/essential_images/empact_logo.png" alt="EmPACT Lab"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-main">
 				<ul class="nav navbar-nav pull-right mainNav">
@@ -153,7 +153,6 @@
 		</div>
 	</header>
 	<!-- /Header -->
-	<div class="home-campus-strip" aria-hidden="true"></div>
 
 	   <section class="container">
 		<div class="heading">
@@ -440,7 +439,7 @@
 	#head {
 		min-height: 540px;
 		border: 0;
-		background-image: var(--homepage-hero-image, url('assets/images/NTU.jpg'));
+		background-image: var(--homepage-hero-image, linear-gradient(135deg, #081930, #183f64));
 		background-position: center;
 	}
 	#head::before {
@@ -504,17 +503,11 @@
 	.hero-button-primary:hover { background: #a50f28; color: #fff; }
 	.hero-button-secondary { border-color: rgba(255,255,255,0.64); color: #fff; }
 	.hero-button-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.13); color: #fff; }
-	.home-campus-strip {
-		height: 72px;
-		background: #fff url('assets/images/NTU_Red.png') center 53% / cover no-repeat;
-		border-bottom: 1px solid #f1d7db;
-	}
 	@media (max-width: 768px) {
 		#head, .modern-hero { min-height: 450px; }
 		.hero-slide { left: 4%; width: 92%; transform: translateY(-50%); text-align: left; }
 		.hero-slide h2 { font-size: clamp(2.1rem, 10vw, 2.8rem); }
 		.hero-slide p { font-size: 1.08em; }
-		.home-campus-strip { height: 48px; }
 	}
 	</style>
 	<script>
@@ -566,20 +559,20 @@
 		if (!gallery) return;
 
 		const galleryImages = [
-					'assets/Lab_Images/pic1.webp',
-					'assets/Lab_Images/pic2.webp',
-					'assets/Lab_Images/pic3.webp',
-					'assets/Lab_Images/pic4.webp',
-					'assets/Lab_Images/pic5.webp',
-					'assets/Lab_Images/pic6.webp',
-					'assets/Lab_Images/pic7.webp',
-					'assets/Lab_Images/pic8.webp',
-					'assets/Lab_Images/pic10.webp',
-					'assets/Lab_Images/pic11.webp',
-					'assets/Lab_Images/pic13.webp',
-					'assets/Lab_Images/pic14.webp',
-					'assets/Lab_Images/pic15.webp',
-					'assets/Lab_Images/pic16.webp'
+					'assets/gallery_images/pic1.webp',
+					'assets/gallery_images/pic2.webp',
+					'assets/gallery_images/pic3.webp',
+					'assets/gallery_images/pic4.webp',
+					'assets/gallery_images/pic5.webp',
+					'assets/gallery_images/pic6.webp',
+					'assets/gallery_images/pic7.webp',
+					'assets/gallery_images/pic8.webp',
+					'assets/gallery_images/pic10.webp',
+					'assets/gallery_images/pic11.webp',
+					'assets/gallery_images/pic13.webp',
+					'assets/gallery_images/pic14.webp',
+					'assets/gallery_images/pic15.webp',
+					'assets/gallery_images/pic16.webp'
 		];
 
 		function startGallery() {

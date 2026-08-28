@@ -82,7 +82,7 @@ border-radius:0px;
 	}
 /* Header */
 #head {
-	background: #181015 url( ../images/NTU.jpg) no-repeat;
+	background: #181015 url( ../essential_images/ntu_logo.png) no-repeat;
 	background-size: cover;
 	min-height: 500px;
 	text-align: center;
@@ -189,7 +189,7 @@ margin: 0;
 padding: 4px 0 5px 30px;
 border-top: 1px solid #f2f2f2;
 position: relative;
-background: url(../images/arrow.png) no-repeat 0 11px;
+background: url(../essential_images/arrow.png) no-repeat 0 11px;
 }
 
 .list.custom-list ul li a {
@@ -843,7 +843,7 @@ margin-bottom:12px;
 	height: 100px;
 	min-height: 100px;
 	padding-top: 0px;
-	background: #181015 url(../images/NTU.jpg) 0px -56px no-repeat;
+	background: #181015 url(../essential_images/ntu_logo.png) 0px -56px no-repeat;
 	/*background: #b6124a;*/
 	background-size: cover;
 	text-align: left;
