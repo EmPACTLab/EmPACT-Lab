@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>News - Embodied Perception and Interaction Lab (EmPACT) Lab</title>
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.css">
@@ -74,7 +74,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="EmPACT Lab"></a>
+				<a class="navbar-brand" href="index.html"><img src="assets/images/empact_logo.png" alt="EmPACT Lab"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-main">
 				<ul class="nav navbar-nav pull-right mainNav">
@@ -100,184 +100,13 @@
 		</div>
 	</header>
 
-	<section class="container" style="margin-top: 40px;">
-		<!-- NEWS DATABASE - Easy to Edit -->
-		<script>
-			// ==========================================================
-			// NEWS DATABASE - Edit this array to add/remove/update news
-			// ==========================================================
-			const newsData = [
-				{ 
-				  date: 'March 2026',
-				  type: 'publication',
-				  title: 'CVPR 2 papers, TRO 1, RAL/ICRA 1 Acceptance',
-				  description: 'We have two papers accepted for CVPR 2026, and one RAL and one TRO paper have been accepted.'
-				},
-				{
-					date: 'November 2025',
-					type: 'keynote',
-					title: 'Keynote Address at EASA 2025',
-					description: 'Professor Wang has been invited to deliver a keynote address at the European Academy of Sciences and Arts (EASA) 2025, presenting recent advances in embodied AI research.'
-				},
-				{
-					date: 'November 2025',
-					type: 'award',
-					title: 'NPGS Scholarship Award',
-					description: 'We congratulate Du on receiving the prestigious Nanyang President\'s Graduate Scholarship (NPGS), recognizing outstanding academic achievement and research potential.'
-				},
-				{
-					date: 'October 2025',
-					type: 'keynote',
-					title: 'Panel Discussion at IROS 2025',
-					description: 'Professor Wang served as a panelist at the Edge AI for Robotics Workshop at the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2025, discussing future directions in embodied intelligence.'
-				},
-				{
-					date: 'October 2025',
-					type: 'keynote',
-					title: 'Dual Keynote Addresses at ICCV 2025',
-					description: 'Professor Wang has been invited to deliver two keynote addresses at ICCV 2025 workshops, focusing on advanced sensing technologies and their applications in robotic systems.'
-				},
-				{
-					date: 'September 2025',
-					type: 'people',
-					title: 'Namai Joins EmPACT Lab',
-					description: 'We are pleased to welcome Namai as a Research Fellow to EmPACT Lab, working in the field of Physics-Informed Neural Networks (PINN) and reinforcement learning algorithm development.'
-				},
-				{
-					date: 'August 2025',
-					type: 'award',
-					title: 'NPGS Scholarship Award',
-					description: 'We congratulate Soumya on receiving the Nanyang President\'s Graduate Scholarship (NPGS), recognizing exceptional research potential and academic excellence.'
-				},
-				{
-					date: 'August 2025',
-					type: 'people',
-					title: 'New Lab Members Join EmPACT',
-					description: 'We are pleased to welcome the 2025 cohort of graduate students and research fellows to EmPACT Lab. Their diverse expertise will strengthen our research capabilities in embodied AI and intelligent systems.'
-				},
-				{
-					date: 'December 2024',
-					type: 'announcement',
-					title: 'EmPACT Lab Established at NTU',
-					description: 'Professor Wang has joined the School of Electrical and Electronic Engineering at Nanyang Technological University, establishing the Embodied Perception and Interaction Lab (EmPACT) to advance research in embodied AI and intelligent systems.'
-				},
-				{
-					date: 'October 2024',
-					type: 'publication',
-					title: 'Pattern Recognition Paper Accepted!',
-					description: 'Our paper on semantic segmentation has been accepted to Pattern Recognition. It focuses on distilling efficient Vision Transformers from CNNs.'
-				},
-				{
-					date: 'September 2024',
-					type: 'publication',
-					title: 'NeurIPS 2024 Acceptance',
-					description: 'EmPACT Lab has one paper accepted to NeurIPS 2024, related to Event-to-Video Reconstruction with language guidance.'
-				},
-				{
-					date: 'July 2024',
-					type: 'publication',
-					title: 'ACM Multimedia 2024',
-					description: 'Our research on Text-to-3D Generation using 3D Gaussian Splatting has been accepted to ACM Multimedia 2024.'
-				},
-				{
-					date: 'July 2024',
-					type: 'publication',
-					title: 'ECCV 2024 - Six Papers Accepted!',
-					description: 'EmPACT Lab has six papers accepted to ECCV 2024, covering Multi-Modal Semantic Segmentation, Event Camera research, and more.'
-				},
-				{
-					date: 'March 2024',
-					type: 'award',
-					title: 'Best Paper Award - IEEE VR 2024',
-					description: 'Our IEEE VR paper received the Best Paper Award for outstanding research in virtual reality and computer vision.'
-				},
-				{
-					date: 'February 2024',
-					type: 'publication',
-					title: 'CVPR 2024 Success',
-					description: 'We have 8 papers accepted to CVPR 2024, covering topics in depth estimation, semantic segmentation, event-based vision, and SLAM.'
-				}
-			];
-
-			// Function to get icon based on news type
-			function getNewsIcon(type) {
-				const icons = {
-					'keynote': 'fa-microphone',
-					'award': 'fa-trophy',
-					'publication': 'fa-file-text',
-					'people': 'fa-users',
-					'announcement': 'fa-bullhorn'
-				};
-				return icons[type] || 'fa-newspaper-o';
-			}
-
-			// Function to get color based on news type
-			function getNewsColor(type) {
-				const colors = {
-					'keynote': '#dc2626',
-					'award': '#d97706',
-					'publication': '#059669',
-					'people': '#2563eb',
-					'announcement': '#7c3aed'
-				};
-				return colors[type] || '#dc2626';
-			}
-
-			// Function to create a news card
-			function createNewsCard(news) {
-				const color = getNewsColor(news.type);
-				const icon = getNewsIcon(news.type);
-				
-				return `
-					<div style="background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%); border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border-left: 4px solid ${color}; transition: all 0.3s;" onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.08)'">
-						<div style="display: flex; align-items: start; gap: 20px;">
-							<div style="flex-shrink: 0;">
-								<div style="width: 50px; height: 50px; background: ${color}; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-									<i class="fa ${icon}" style="color: white; font-size: 24px;"></i>
-								</div>
-							</div>
-							<div style="flex-grow: 1;">
-								<div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
-									<h3 style="color: #1a1a1a; font-weight: 600; margin: 0; font-size: 20px;">${news.title}</h3>
-									<span style="background: ${color}15; color: ${color}; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; white-space: nowrap; margin-left: 15px;">${news.date}</span>
-								</div>
-								<p style="color: #666; line-height: 1.7; margin: 0;">${news.description}</p>
-							</div>
-						</div>
-					</div>
-				`;
-			}
-
-			// Generate and display all news
-			document.addEventListener('DOMContentLoaded', function() {
-				const newsContainer = document.getElementById('newsContainer');
-				newsData.forEach(news => {
-					newsContainer.innerHTML += createNewsCard(news);
-				});
-			});
-		</script>
-
-		<div class="row">
-			<div class="col-md-12">
-				<div id="newsContainer"></div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12 text-center" style="margin-top: 30px; margin-bottom: 40px;">
-				<h3 style="color: #1a1a1a; font-weight: 600; margin-bottom: 20px;">Stay Informed</h3>
-				<a href="contact.html" class="btn btn-action btn-lg" style="background: linear-gradient(135deg, #dc2626, #ef4444); border: none; padding: 14px 35px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 12px rgba(220,38,38,0.3); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(220,38,38,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(220,38,38,0.3)'">Contact Us for Collaboration</a>
-			</div>
+	<section class="container news-page">
+		<div id="newsContainer" class="news-directory" aria-live="polite">
+			<p class="news-status">Loading news…</p>
 		</div>
 	</section>
 
 	<footer id="footer">
-		<div class="container">
-			<div class="social text-center">
-				<a href="https://www.linkedin.com/in/addison-lin-wang-62542b222/"><i class="fa fa-linkedin"></i></a>
-				<a href="https://github.com/empactlab"><i class="fa fa-github"></i></a>
-			</div>
-		</div>
 		<div class="footer2">
 			<div class="container">
 				<div class="row">
@@ -295,16 +124,17 @@
 					</div>
 					<div class="col-md-6 panel">
 						<div class="panel-body">
-							<p class="text-right">Copyright &copy; 2025 Embodied Perception and Interaction Lab (EmPACT) Lab, NTU Singapore</p>
+							<p class="text-right">Copyright &copy; 2026 EmPACT Lab @ NTU Singapore</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</footer>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="assets/js/custom.js"></script>
+	<script src="assets/js/news-from-csv.js?v=20260829-6"></script>
 	
 	<!-- Custom Mobile Navbar Script -->
 	<script>

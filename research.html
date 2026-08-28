@@ -6,8 +6,7 @@
 	<meta name="description" content="Embodied Perception and Interaction Lab (EmPACT) Lab Research">
 	<meta name="author" content="EmPACT Lab">
 	<title>Research - Embodied Perception and Interaction Lab (EmPACT) Lab</title>
-	<link rel="favicon" href="assets/images/favicon.png">
-	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 	<!-- Custom styles for our template -->
@@ -72,6 +71,113 @@
 			}
 		}
 	</style>
+	<style>
+		.research-section {
+			padding: 40px 0 18px;
+			border-top: 1px solid #e8e8e8;
+			scroll-margin-top: 70px;
+		}
+		.research-section:nth-child(even) {
+			background: #fafafa;
+		}
+		.research-section-heading {
+			display: flex;
+			align-items: flex-start;
+			gap: 16px;
+			margin-bottom: 24px;
+		}
+		.research-section-number {
+			padding-top: 4px;
+			color: #b51231;
+			font-size: 13px;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+		}
+		.research-section h2 {
+			margin: 0 0 6px;
+			color: #1a1a1a;
+			font-size: 25px;
+			font-weight: 600;
+		}
+		.research-section-summary {
+			margin: 0;
+			color: #666;
+			line-height: 1.65;
+		}
+		.research-grid {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.research-column {
+			display: flex;
+			margin-bottom: 24px;
+		}
+		.research-card {
+			width: 100%;
+			height: 320px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 28px 24px;
+			border: 1px solid #e6e6e6;
+			border-radius: 12px;
+			background: #fff;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+			text-align: center;
+			transition: transform 0.25s ease, box-shadow 0.25s ease;
+		}
+		.research-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 24px rgba(0,0,0,0.11);
+		}
+		.research-icon {
+			width: 58px;
+			height: 58px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 18px;
+			border-radius: 50%;
+			background: #fff0f2;
+			color: #c41230;
+			font-size: 27px;
+		}
+		.research-card h3 {
+			min-height: 48px;
+			margin: 0 0 12px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #1a1a1a;
+			font-size: 18px;
+			font-weight: 600;
+			line-height: 1.35;
+		}
+		.research-card p {
+			margin: 0;
+			color: #666;
+			font-size: 14px;
+			line-height: 1.65;
+		}
+		.research-card-papers {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			margin-top: auto;
+			padding-top: 16px;
+			color: #9f1d28;
+			font-size: 13px;
+			font-weight: 700;
+			text-decoration: none;
+		}
+		.research-card-papers:hover,
+		.research-card-papers:focus { color: #76131d; text-decoration: none; }
+		@media (max-width: 767px) {
+			.research-section { padding: 30px 0 10px; }
+			.research-section h2 { font-size: 22px; }
+			.research-card { height: 320px; }
+		}
+	</style>
 </head>
 
 <body>
@@ -87,7 +193,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.html">
-					<img src="assets/images/logo.png" alt="EmPACT Lab"></a>
+					<img src="assets/images/empact_logo.png" alt="EmPACT Lab"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-main">
 				<ul class="nav navbar-nav pull-right mainNav">
@@ -109,7 +215,7 @@
 			<div class="row">
 				<div class="col-sm-8">
 					<h1>Our Research Areas</h1>
-					<p>We focus on human-like perception and interaction for embodied intelligent systems!</p>
+					<p>At EmPACT Lab, we study how intelligent systems can sense, perceive, understand, and act in the real world.</p>
 				</div>
 			</div>
 		</div>
@@ -122,119 +228,113 @@
 		const researchData = {
 			sections: [
 				{
-					title: "Neuro- and Physics-inspired Sensing and Perception",
+					id: 'neuro-physics-perception',
+					title: 'Neuro- and Physics-Inspired Perception',
+					summary: 'Event-driven and physics-informed methods for reliable perception under difficult visual and physical conditions.',
 					areas: [
-						{
-							icon: "fa-video-camera",
-							title: "Bio-inspired Sensing",
-							description: "We explore how to develop human-like sensing (camera) systems and AI algorithms for embodied agents!"
-						},
-						{
-							icon: "fa-globe",
-							title: "Physics-informed Sensing",
-							description: "We explore how to develop human-like e-skin to sense multi-physics from environment for self-awareness of embodied agents!"
-						},
-						{
-							icon: "fa-eye",
-							title: "Multi-modal Perception",
-							description: "Semantic segmentation, 2D/3D object detection for intelligent scene understanding."
-						}
+						{ icon: 'fa-camera', title: 'Event-Guided Imaging', description: 'Event-camera methods for HDR reconstruction, low-light video enhancement, and restoration in challenging illumination.' },
+						{ icon: 'fa-clock-o', title: 'Temporal Event Vision', description: 'Event-based point tracking, frame interpolation, and recognition for fast motion and rolling-shutter video.' },
+						{ icon: 'fa-cogs', title: 'Physics-Informed Learning', description: 'Physical priors for spiking networks, policy optimisation, and biomechanical locomotion on challenging terrain.' }
 					]
 				},
 				{
-					title: "Spatial Intelligence and Edge AI",
+					id: 'multi-sensor-fusion',
+					title: 'Multi-Sensor Fusion',
+					summary: 'Recent work fuses complementary visual, event, geometry, and range signals for richer embodied perception.',
 					areas: [
-						{
-							icon: "fa-cube",
-							title: "Spatial Reasoning, Memory and Mapping",
-							description: "Spatial understanding, reasoning, memory and mapping for embodied agents."
-						},
-						{
-							icon: "fa-cubes",
-							title: "Neuromorphic Computing and Edge AI",
-							description: "Brain-inspired computing, edge AI solutions for robotics."
-						}
+						{ icon: 'fa-exchange', title: 'Panoramic-LiDAR Fusion', description: 'Hybrid spherical panoramic and LiDAR perception for humanoid robots operating in real-world environments.' },
+						{ icon: 'fa-random', title: 'Cross-Modal Transfer', description: 'Source-free and language-guided adaptation across modalities, including consistent event-based depth estimation.' },
+						{ icon: 'fa-sitemap', title: 'Geometry-Aware Fusion', description: 'Image-mesh, multi-view, and vision-event fusion for dense human-scene contact and 3D understanding.' }
 					]
 				},
 				{
-					title: "Robot Learning and Human-Agent Interaction",
+					id: 'spatial-intelligence',
+					title: 'Spatial Intelligence',
+					summary: 'Geometry-aware representations and reasoning for 360-degree perception, 3D reconstruction, and robot navigation.',
 					areas: [
-						{
-							icon: "fa-cog",
-							title: "Robot Learning",
-							description: "Lifelong learning, data-efficient learning, knowledge Transformers"
-						},
-						{
-							icon: "fa-users",
-							title: "Human-agent Interaction",
-							description: "Self-sensation and behavior modeling, Human-aligned robotic actions."
-						}
+						{ icon: 'fa-compass', title: '360° Spatial Perception', description: 'Panoramic depth, stereo matching, segmentation, and real-world 360° datasets for omnidirectional vision.' },
+						{ icon: 'fa-camera', title: 'Event-Enhanced 3D Reconstruction', description: 'Event-guided Gaussian splatting and diffusion repair for dynamic, high-fidelity human and scene reconstruction.' },
+						{ icon: 'fa-map-marker', title: 'Embodied Spatial Reasoning', description: 'Geometry-aware directional reasoning, semantic occupancy prediction, and spatial intelligence for mobile robots.' }
+					]
+				},
+				{
+					id: 'edge-ai-embodied-agents',
+					title: 'Edge AI for Embodied Agents',
+					summary: 'Efficient visual intelligence that reduces sensing and reasoning cost while retaining embodied capability.',
+					areas: [
+						{ icon: 'fa-bolt', title: 'Low-Power Spiking Perception', description: 'Spike-driven distillation from vision-language models for low-power visual perception in embodied AI.' },
+						{ icon: 'fa-tachometer', title: 'Efficient Foundation Vision', description: 'Training-free, adaptive, and memory-aware visual representations for VLMs, 4K panoramas, and video segmentation.' },
+						{ icon: 'fa-desktop', title: 'Efficient Vision-Language-Action', description: 'Geometry- and physics-grounded VLA models for robotic manipulation and agent control.' }
+					]
+				},
+				{
+					id: 'data-efficient-robotics',
+					title: 'Data-Efficient Learning for Robotics',
+					summary: 'Learning methods that reduce labelling demand and transfer capability across sensors, domains, and tasks.',
+					areas: [
+						{ icon: 'fa-refresh', title: 'Self-Supervised Event Learning', description: 'Self-supervised event-guided reconstruction and interpolation that learn useful temporal visual representations.' },
+						{ icon: 'fa-exchange', title: 'Unsupervised Adaptation', description: 'Source-free cross-modal transfer and language-guided domain adaptation without target-domain labels.' },
+						{ icon: 'fa-users', title: 'Knowledge and Prior Distillation', description: 'Distilling event-to-video and VLM priors into compact models for 3D reconstruction, depth, and perception.' }
+					]
+				},
+				{
+					id: 'human-ai-agent-interaction',
+					title: 'Human-AI Agent Interaction',
+					summary: 'Human-aware perception and interaction grounded in egocentric understanding, touch, and physical embodiment.',
+					areas: [
+						{ icon: 'fa-user', title: 'Egocentric Emotion Understanding', description: 'Human-centred visual understanding of emotions and behaviour from first-person video for embodied companions.' },
+						{ icon: 'fa-hand-o-up', title: 'Tactile-Language Interaction', description: 'Geometry-aware tactile-language models for reasoning about contact, motion, and object orientation.' },
+						{ icon: 'fa-comments', title: 'Human-Scene Modelling', description: '3D modelling of dynamic people, human-scene contact, and physical movement to support human-aware agents.' }
 					]
 				}
 			]
 		};
 
-		// Function to create a research area card
-		function createResearchCard(area) {
+		function createResearchCard(area, topic) {
+			const paperLink = 'publication.html?topic=' + encodeURIComponent(topic) + '&subtopic=' + encodeURIComponent(area.title);
 			return `
-				<div class="col-md-4" style="margin-bottom: 25px;">
-					<div style="background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%); border-radius: 12px; padding: 30px; height: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border: 1px solid #e8e8e8; transition: all 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.08)';">
-						<div style="text-align: center; margin-bottom: 20px;">
-							<i class="fa ${area.icon}" style="font-size: 48px; color: #dc2626; line-height: 1;"></i>
-						</div>
-						<h3 style="color: #1a1a1a; font-weight: 600; margin: 0 0 15px 0; font-size: 18px; text-align: center;">${area.title}</h3>
-						<div style="width: 40px; height: 3px; background: linear-gradient(to right, #dc2626, #ef4444); margin: 0 auto 15px auto; border-radius: 2px;"></div>
-						<p style="color: #666; line-height: 1.7; text-align: center; margin: 0; font-size: 14px;">${area.description}</p>
-					</div>
+				<div class="col-sm-6 col-md-4 research-column">
+					<article class="research-card">
+						<div class="research-icon"><i class="fa ${area.icon}" aria-hidden="true"></i></div>
+						<h3>${area.title}</h3>
+						<p>${area.description}</p>
+						<a class="research-card-papers" href="${paperLink}">View Papers <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+					</article>
 				</div>
 			`;
 		}
 
-		// Function to generate all research sections
 		function generateResearchHTML() {
 			const container = document.getElementById('research-container');
 			let html = '';
-			
+
 			researchData.sections.forEach((section, index) => {
-				// First section uses different structure
-				if (index === 0) {
-					html += `
-						<div id="courses">
-							<section class="container">
-								<h3 style="color: #1a1a1a; font-weight: 600; margin-bottom: 30px;">${section.title}</h3>
-								<div class="row">
-					`;
-					section.areas.forEach(area => {
-						html += createResearchCard(area);
-					});
-					html += `
-								</div>
-							</section>
-						</div>
-					`;
-				} else {
-					// Other sections use container structure
-					html += `
+				html += `
+					<section class="research-section" id="${section.id}">
 						<div class="container">
-							<section class="row">
-								<div class="col-md-12">
-									<h3 style="margin-top: 40px; margin-bottom: 30px; color: #1a1a1a; font-weight: 600;">${section.title}</h3>
+							<div class="research-section-heading">
+								<span class="research-section-number">0${index + 1}</span>
+								<div>
+									<h2>${section.title}</h2>
+									<p class="research-section-summary">${section.summary}</p>
 								</div>
-					`;
-					section.areas.forEach(area => {
-						html += createResearchCard(area);
-					});
-					html += `
-							</section>
+							</div>
+							<div class="row research-grid">
+								${section.areas.map(function (area) { return createResearchCard(area, section.title); }).join('')}
+							</div>
 						</div>
-					`;
-				}
+					</section>
+				`;
 			});
-			
+
 			container.innerHTML = html;
+
+			if (window.location.hash) {
+				const target = document.getElementById(window.location.hash.slice(1));
+				if (target) target.scrollIntoView();
+			}
 		}
 
-		// Load research areas when page loads
 		document.addEventListener('DOMContentLoaded', generateResearchHTML);
 	</script>
 
@@ -244,15 +344,6 @@
 
 	
 	<footer id="footer">
-		<div class="container">
-			<div class="social text-center">
-				<a href="https://www.linkedin.com/in/addison-lin-wang-62542b222/"><i class="fa fa-linkedin"></i></a>
-				<a href="https://github.com/empactlab"><i class="fa fa-github"></i></a>
-			</div>
-
-			<div class="clear"></div>
-			<!--CLEAR FLOATS-->
-		</div>
 		<div class="footer2">
 			<div class="container">
 				<div class="row">
@@ -273,7 +364,7 @@
 					<div class="col-md-6 panel">
 						<div class="panel-body">
 							<p class="text-right">
-								Copyright &copy; 2025 Embodied Perception and Interaction Lab (EmPACT) Lab, NTU Singapore
+								Copyright &copy; 2026 EmPACT Lab @ NTU Singapore
 							</p>
 						</div>
 					</div>
@@ -288,8 +379,8 @@
 
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="assets/js/custom.js"></script>
 	
 	<!-- Custom Mobile Navbar Script -->

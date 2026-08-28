@@ -6,7 +6,6 @@
 	<meta name="description" content="Learn is a modern and fully responsive Template by WebThemez.">
 	<meta name="author" content="webThemez.com">
 	<title>Embodied Perception and Interaction Lab (EmPACT) Lab at NTU Singapore</title>
-	<link rel="favicon" href="assets/images/favicon.png">
 	<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -73,6 +72,21 @@
 			}
 		}
 	</style>
+	<script>
+		// Pick a different homepage hero image on each visit. Add new filenames here
+		// when images are placed in assets/homepage_images.
+		(function () {
+			const homepageImages = [
+				'assets/homepage_images/eee1.webp',
+				'assets/homepage_images/hive1.webp',
+				'assets/homepage_images/hive2.webp',
+				'assets/homepage_images/hive3.webp',
+				'assets/homepage_images/robot1.webp'
+			];
+			const selectedImage = homepageImages[Math.floor(Math.random() * homepageImages.length)];
+			document.documentElement.style.setProperty('--homepage-hero-image', `url("${selectedImage}")`);
+		})();
+	</script>
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -87,7 +101,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.html">
-					<img src="assets/images/logo.png" alt="Techro HTML5 template"></a>
+					<img src="assets/images/empact_logo.png" alt="EmPACT Lab"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-main">
 				<ul class="nav navbar-nav pull-right mainNav">
@@ -110,30 +124,28 @@
 			<div class="banner-content">
 				<div id="modern-hero" class="modern-hero">
 					<div class="hero-slide active">
+						<p class="hero-kicker">EmPACT Lab · NTU Singapore</p>
 						<h2>Embodied Perception and Interaction Lab</h2>
 						<p>Advancing the Frontiers of AI and Robotics through Sensing, Perception, Cognition and Interaction</p>
-						<div class="hero-nav">
-							<button class="hero-nav-dot active" data-slide="0"></button>
-							<button class="hero-nav-dot" data-slide="1"></button>
-							<button class="hero-nav-dot" data-slide="2"></button>
+						<div class="hero-actions">
+							<a href="research.html" class="hero-button hero-button-primary">Explore Research</a>
+							<a href="people.html" class="hero-button hero-button-secondary">Meet the Team</a>
 						</div>
 					</div>
 					<div class="hero-slide">
+						<p class="hero-kicker">Research at EmPACT</p>
 						<h2>Cutting-Edge Research</h2>
 						<p>We focus on Neuro- and Physics-driven Sensing, Sensor Fusion, Spatial Intelligence, Embodied AI, Human-Agent Interaction</p>
-						<div class="hero-nav">
-							<button class="hero-nav-dot" data-slide="0"></button>
-							<button class="hero-nav-dot active" data-slide="1"></button>
-							<button class="hero-nav-dot" data-slide="2"></button>
+						<div class="hero-actions">
+							<a href="research.html" class="hero-button hero-button-primary">Our Research Areas</a>
 						</div>
 					</div>
 					<div class="hero-slide">
+						<p class="hero-kicker">Work with us</p>
 						<h2>Join Our Team</h2>
 						<p>Explore opportunities to work on exciting projects in AI and Future Smart Intelligent Systems</p>
-						<div class="hero-nav">
-							<button class="hero-nav-dot" data-slide="0"></button>
-							<button class="hero-nav-dot" data-slide="1"></button>
-							<button class="hero-nav-dot active" data-slide="2"></button>
+						<div class="hero-actions">
+							<a href="contact.html" class="hero-button hero-button-primary">Get in Touch</a>
 						</div>
 					</div>
 				</div>
@@ -141,6 +153,7 @@
 		</div>
 	</header>
 	<!-- /Header -->
+	<div class="home-campus-strip" aria-hidden="true"></div>
 
 	   <section class="container">
 		<div class="heading">
@@ -149,10 +162,13 @@
 		</div>
 		<div class="row">
 			<div class="col-md-8">
-				<p>Welcome to the Embodied Perception and Interaction Lab (EmPACT) Lab at NTU. We are dedicated to advancing the frontiers of AI and embodied intelligent systems through AI-driven perception and interaction approaches. Our research focuses on making intelligent agents that can sense, perseive, and interact with the world in more natural and efficient ways.</p>
-				<p>Our lab explores various cutting-edge topics including Neuro- and Physics-driven Sensing, Human-like Multi-Sensory Fusion, Spatial Intelligence, Embodied Learning Theory, Human-Agent Interaction. We aim to publish top-tier research in world-class conferences and journals while fostering the next generation of researchers in AI and robotics.</p>
+				<p>Welcome to the <span class="about-keyword">Embodied Perception and Interaction Lab (EmPACT Lab)</span> at NTU.</p>
+				<p>At EmPACT Lab, we work on a simple but ambitious goal: <span class="about-keyword">building intelligent systems that can understand and interact with the world more like humans do.</span></p>
+				<p>Our research explores how AI and embodied agents can <span class="about-keyword">sense, perceive, understand, learn, and act</span> in complex real-world environments. We are especially interested in creating systems that are more adaptive, efficient, and natural in the way they interact with people and their surroundings.</p>
+				<p>Our research spans several exciting areas, including <span class="about-keyword">Neuro- and Physics-Driven Sensing, Human-like Multi-Sensory Fusion, Spatial Intelligence, Embodied Learning Theory, and Human-Agent Interaction</span>.</p>
+				<p>We bring together ideas from <span class="about-keyword">AI, robotics, perception, sensing, and human intelligence</span> to develop new approaches for the next generation of embodied intelligent systems. Along the way, we aim to produce impactful research at leading conferences and journals while creating an open and collaborative environment where students and researchers can explore bold ideas and grow together.</p>
 				<blockquote class="blockquote-1">
-					<p>We are focusing on enabling human-centered intelligent agents to sense, perceive and cognize and interact with environement in a human-like manner!</p>
+					<p>Our goal is to build <span class="about-keyword">human-centered intelligent agents</span> that can sense, perceive, understand, and interact with their environment in a natural and human-like way.</p>
 					<small>EmPACT Lab Research Philosophy</small>
 				</blockquote>
 			</div>
@@ -222,20 +238,20 @@
       <section class="container" style="margin-bottom: 30px;">
       <div style="background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%); border-radius: 12px; padding: 40px 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
       <div class="row">
-      	<div class="col-md-6"><div class="title-box clearfix "><h2 class="title-box_primary">Our Research</h2></div>
-        <p><span>We focus on cutting-edge research in embodied perception and interaction!</span></p>
-        <p>Our research areas include Sensing, Percpetion, Cognition, Human-aligned Actions for AI and Emobodied Agents. We collaborate with the worldwide leading institutions and industrial parterners.</p>
-        <a href="research.html" title="read more" class="btn-inline " target="_self">read more</a> </div>
+	      <div class="col-md-6"><div class="title-box clearfix "><h2 class="title-box_primary">Our Research</h2></div>
+        <p>At EmPACT Lab, we study how intelligent systems can <span class="about-keyword">sense, perceive, understand, and act</span> in the real world.</p>
+        <p>Our research brings together <span class="about-keyword">AI, robotics, sensing, and human-centered intelligence</span> to develop embodied agents that are more adaptive, efficient, and natural in the way they interact with people and their surroundings.</p>
+        <p>We work closely with <span class="about-keyword">leading universities, research institutes, and industry partners around the world</span>, turning fundamental research into technologies that can make a real-world impact.</p></div>
         
         <div class="col-md-6"><div class="title-box clearfix "><h2 class="title-box_primary">Research Areas</h2></div>
             <div class="list styled custom-list">
             <ul>
-            <li><a title="Neuro- and Physics-inspired Sensing" href="research.html">Neuro- and Physics-inspired Perception</a></li>
-            <li><a title="Multi-sensory Fusion" href="research.html">Multi-Sensor Fusion</a></li>
-            <li><a title="Spatial Intelligence" href="research.html">Spatial Intelligence</a></li>
-            <li><a title="Edge AI" href="research.html">Edge AI for Emobodied Agents</a></li>
-            <li><a title="Robot Learning" href="research.html">Data-efficient Learning for Robotics</a></li>
-            <li><a title="Human-AI Agent Interaction" href="research.html">Human-AI Agent Interaction</a></li>
+            <li><a title="Neuro- and Physics-Inspired Perception" href="research.html#neuro-physics-perception">Neuro- and Physics-Inspired Perception</a></li>
+            <li><a title="Multi-Sensor Fusion" href="research.html#multi-sensor-fusion">Multi-Sensor Fusion</a></li>
+            <li><a title="Spatial Intelligence" href="research.html#spatial-intelligence">Spatial Intelligence</a></li>
+            <li><a title="Edge AI for Embodied Agents" href="research.html#edge-ai-embodied-agents">Edge AI for Embodied Agents</a></li>
+            <li><a title="Data-Efficient Learning for Robotics" href="research.html#data-efficient-robotics">Data-Efficient Learning for Robotics</a></li>
+            <li><a title="Human-AI Agent Interaction" href="research.html#human-ai-agent-interaction">Human-AI Agent Interaction</a></li>
             </ul>
             </div>
          </div>
@@ -247,15 +263,6 @@
     
       
     <footer id="footer">
-		<div class="container">
-			<div class="social text-center">
-				<a href="https://www.linkedin.com/in/addison-lin-wang-62542b222/"><i class="fa fa-linkedin"></i></a>
-				<a href="https://github.com/empact-lab"><i class="fa fa-github"></i></a>
-			</div>
-
-			<div class="clear"></div>
-			<!--CLEAR FLOATS-->
-		</div>
 		<div class="footer2">
 			<div class="container">
 				<div class="row">
@@ -276,7 +283,7 @@
 					<div class="col-md-6 panel">
 						<div class="panel-body">
 							<p class="text-right">
-								Copyright &copy; 2024 Embodied Perception and Interaction Lab (EmPACT) Lab, NTU Singapore
+								Copyright &copy; 2026 EmPACT Lab @ NTU Singapore
 							</p>
 						</div>
 					</div>
@@ -292,6 +299,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="assets/js/custom.js"></script>
+	<script src="assets/js/news-from-csv.js?v=20260829-6"></script>
 
 	<style>
 	/* Modern Hero Section - replaces old da-slider */
@@ -339,32 +347,6 @@
 		max-width: 95%;
 		margin: 0 0 30px 0;
 		position: relative;
-	}
-	.hero-nav {
-		position: relative;
-		display: flex;
-		gap: 12px;
-		z-index: 10;
-		margin-top: 0;
-	}
-	.hero-nav-dot {
-		width: 12px;
-		height: 12px;
-		border-radius: 50%;
-		background: rgba(255,255,255,0.5);
-		border: 2px solid #fff;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		padding: 0;
-	}
-	.hero-nav-dot:hover {
-		background: rgba(255,255,255,0.8);
-		transform: scale(1.2);
-	}
-	.hero-nav-dot.active {
-		background: #fff;
-		transform: scale(1.3);
-		box-shadow: 0 0 10px rgba(255,255,255,0.8);
 	}
 	
 	/* Latest News Widget */
@@ -448,19 +430,97 @@
 		.hero-slide h2 { font-size: 2.2em; margin-bottom: 20px; }
 		.hero-slide p { font-size: 1.1em; max-width: 100%; margin-bottom: 20px; }
 		.modern-hero { min-height: 350px; }
-		.hero-nav {
-			justify-content: center;
-		}
 		.latest-news-widget {
 			margin-top: 30px;
 		}
+	}
+
+	/* Homepage hero: campus photography carries the context; the red illustration
+	   is used only as a restrained visual accent below it. */
+	#head {
+		min-height: 540px;
+		border: 0;
+		background-image: var(--homepage-hero-image, url('assets/images/NTU.jpg'));
+		background-position: center;
+	}
+	#head::before {
+		background: linear-gradient(90deg, rgba(8, 25, 48, 0.92) 0%, rgba(8, 25, 48, 0.76) 43%, rgba(8, 25, 48, 0.2) 78%, rgba(8, 25, 48, 0.08) 100%);
+	}
+	#head .container { position: relative; z-index: 1; }
+	.modern-hero {
+		min-height: 540px;
+		padding-left: 2%;
+	}
+	.hero-slide {
+		top: 50%;
+		left: 2%;
+		width: min(650px, 92%);
+		max-width: none;
+		padding: 0;
+		transform: translateY(-50%);
+	}
+	.hero-slide h2 {
+		margin-bottom: 18px;
+		font-size: clamp(2.5rem, 4.2vw, 4.1rem);
+		font-weight: 700;
+		letter-spacing: -0.035em;
+		text-shadow: none;
+	}
+	.hero-slide p {
+		max-width: 610px;
+		margin-bottom: 26px;
+		font-size: 1.25em;
+		text-shadow: none;
+	}
+	.hero-kicker {
+		margin: 0 0 16px !important;
+		color: #f3b4bf !important;
+		font-size: 0.78em !important;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-bottom: 30px;
+	}
+	.hero-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 44px;
+		padding: 10px 18px;
+		border: 1px solid transparent;
+		border-radius: 5px;
+		font-size: 14px;
+		font-weight: 700;
+		text-decoration: none;
+		transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+	}
+	.hero-button:hover { transform: translateY(-2px); text-decoration: none; }
+	.hero-button-primary { background: #c41230; color: #fff; }
+	.hero-button-primary:hover { background: #a50f28; color: #fff; }
+	.hero-button-secondary { border-color: rgba(255,255,255,0.64); color: #fff; }
+	.hero-button-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.13); color: #fff; }
+	.home-campus-strip {
+		height: 72px;
+		background: #fff url('assets/images/NTU_Red.png') center 53% / cover no-repeat;
+		border-bottom: 1px solid #f1d7db;
+	}
+	@media (max-width: 768px) {
+		#head, .modern-hero { min-height: 450px; }
+		.hero-slide { left: 4%; width: 92%; transform: translateY(-50%); text-align: left; }
+		.hero-slide h2 { font-size: clamp(2.1rem, 10vw, 2.8rem); }
+		.hero-slide p { font-size: 1.08em; }
+		.home-campus-strip { height: 48px; }
 	}
 	</style>
 	<script>
 	// Modern hero slider - replaces old da-slider
 	(function(){
 		const slides = document.querySelectorAll('.hero-slide');
-		const dots = document.querySelectorAll('.hero-nav-dot');
 		let currentSlide = 0;
 		const slideInterval = 5000; // 5 seconds
 		let isTransitioning = false;
@@ -472,12 +532,10 @@
 			
 			// Remove active from current slide
 			slides[currentSlide].classList.remove('active');
-			dots[currentSlide].classList.remove('active');
 			
 			// Wait for fade out before showing next slide
 			setTimeout(() => {
 				slides[index].classList.add('active');
-				dots[index].classList.add('active');
 				currentSlide = index;
 				
 				// Allow next transition after animation completes
@@ -496,169 +554,48 @@
 		// Auto-advance slides
 		setInterval(nextSlide, slideInterval);
 
-		// Dot navigation
-		dots.forEach((dot, index) => {
-			dot.addEventListener('click', () => {
-				if (index !== currentSlide && !isTransitioning) {
-					showSlide(index);
-				}
-			});
-		});
 	})();
 	
-	// Load latest news from news database
-	(function(){
-		const newsData = [
-			{
-				date: 'November 2025',
-				type: 'keynote',
-				title: 'Keynote Address at EASA 2025',
-				description: 'Dr. Zhou delivered a keynote on embodied AI at the European Association for Signal Processing Conference'
-			},
-			{
-				date: 'November 2025',
-				type: 'award',
-				title: 'NPGS Scholarship Award',
-				description: 'Pham Tien Du received the prestigious NTU Presidential Graduate Scholarship'
-			},
-			{
-				date: 'October 2025',
-				type: 'keynote',
-				title: 'Panel Discussion at IROS 2025',
-				description: 'Participated in expert panel on future of robotics and spatial intelligence'
-			}
-		];
-		
-		const newsList = document.getElementById('latest-news-list');
-		if (newsList) {
-			newsData.forEach(news => {
-				const newsItem = document.createElement('div');
-				newsItem.className = 'news-widget-item';
-				newsItem.innerHTML = `
-					<span class="news-widget-date">${news.date}</span>
-					<p class="news-widget-headline">${news.title}</p>
-					<p class="news-widget-description">${news.description}</p>
-				`;
-				newsList.appendChild(newsItem);
-			});
-		}
-	})();
 	</script>
 
 	<script>
-	// Modern hero slider - replaces old da-slider
-	(function(){
-		const slides = document.querySelectorAll('.hero-slide');
-		const dots = document.querySelectorAll('.hero-nav-dot');
-		let currentSlide = 0;
-		const slideInterval = 5000; // 5 seconds
-		let isTransitioning = false;
-
-		function showSlide(index) {
-			if (isTransitioning) return; // Prevent overlapping animations
-			
-			isTransitioning = true;
-			
-			// Remove active from current slide
-			slides[currentSlide].classList.remove('active');
-			dots[currentSlide].classList.remove('active');
-			
-			// Wait for fade out before showing next slide
-			setTimeout(() => {
-				slides[index].classList.add('active');
-				dots[index].classList.add('active');
-				currentSlide = index;
-				
-				// Allow next transition after animation completes
-				setTimeout(() => {
-					isTransitioning = false;
-				}, 600); // Match transition duration
-			}, 100);
-		}
-
-		function nextSlide() {
-			if (isTransitioning) return;
-			const next = (currentSlide + 1) % slides.length;
-			showSlide(next);
-		}
-
-		// Auto-advance slides
-		setInterval(nextSlide, slideInterval);
-
-		// Dot navigation
-		dots.forEach((dot, index) => {
-			dot.addEventListener('click', () => {
-				if (index !== currentSlide && !isTransitioning) {
-					showSlide(index);
-				}
-			});
-		});
-	})();
-	</script>
-
-	<script>
-	// Auto-populate gallery with ALL images from assets/Lab_Images (no manual list needed)
+	// Gallery image paths are relative to this page, so they work both locally and
+	// when the site is deployed under a subdirectory.
 	(function(){
 		const gallery = document.getElementById('lab-gallery');
 		if (!gallery) return;
 
-		// Fetch the directory listing to get all image files dynamically
-		fetch('assets/Lab_Images/')
-			.then(response => response.text())
-			.then(html => {
-				// Parse directory listing to extract image filenames
-				const parser = new DOMParser();
-				const doc = parser.parseFromString(html, 'text/html');
-				const links = Array.from(doc.querySelectorAll('a'));
-				
-				// Filter for image files (jpg, jpeg, png, gif, webp)
-				const images = links
-					.map(a => a.getAttribute('href'))
-					.filter(href => href && /\.(jpg|jpeg|png|gif|webp)$/i.test(href))
-					.map(filename => 'assets/Lab_Images/' + filename);
+		const galleryImages = [
+					'assets/lab_images/pic1.webp',
+					'assets/lab_images/pic2.webp',
+					'assets/lab_images/pic3.webp',
+					'assets/lab_images/pic4.webp',
+					'assets/lab_images/pic5.webp',
+					'assets/lab_images/pic6.webp',
+					'assets/lab_images/pic7.webp',
+					'assets/lab_images/pic8.webp',
+					'assets/lab_images/pic10.webp',
+					'assets/lab_images/pic11.webp',
+					'assets/lab_images/pic13.webp',
+					'assets/lab_images/pic14.webp',
+					'assets/lab_images/pic15.webp',
+					'assets/lab_images/pic16.webp'
+		];
 
-				if (images.length === 0) {
-					// Fallback: use hardcoded list if directory listing fails
-					return loadGallery([
-						'assets/Lab_Images/Image.jpeg',
-						'assets/Lab_Images/pic10.jpeg',
-						'assets/Lab_Images/pic11.jpeg',
-						'assets/Lab_Images/pic13.jpeg',
-						'assets/Lab_Images/pic14.jpeg',
-						'assets/Lab_Images/pic15.jpeg',
-						'assets/Lab_Images/pic1.jpg',
-						'assets/Lab_Images/pic2.jpg',
-						'assets/Lab_Images/pic3.jpg',
-						'assets/Lab_Images/pic4.jpg',
-						'assets/Lab_Images/pic5.jpg',
-						'assets/Lab_Images/pic6.jpg',
-						'assets/Lab_Images/pic7.jpg',
-						'assets/Lab_Images/pic8.jpg'
-					]);
-				}
+		function startGallery() {
+			loadGallery(galleryImages);
+		}
 
-				loadGallery(images);
-			})
-			.catch(err => {
-				// Fallback: use hardcoded list if fetch fails
-				console.warn('Could not auto-detect images, using fallback list', err);
-				loadGallery([
-					'assets/Lab_Images/Image.jpeg',
-					'assets/Lab_Images/pic10.jpeg',
-					'assets/Lab_Images/pic11.jpeg',
-					'assets/Lab_Images/pic13.jpeg',
-					'assets/Lab_Images/pic14.jpeg',
-					'assets/Lab_Images/pic15.jpeg',
-					'assets/Lab_Images/pic1.jpg',
-					'assets/Lab_Images/pic2.jpg',
-					'assets/Lab_Images/pic3.jpg',
-					'assets/Lab_Images/pic4.jpg',
-					'assets/Lab_Images/pic5.jpg',
-					'assets/Lab_Images/pic6.jpg',
-					'assets/Lab_Images/pic7.jpg',
-					'assets/Lab_Images/pic8.jpg'
-				]);
-			});
+		if ('IntersectionObserver' in window) {
+			const galleryObserver = new IntersectionObserver(function(entries) {
+				if (!entries[0].isIntersecting) return;
+				galleryObserver.disconnect();
+				startGallery();
+			}, { rootMargin: '250px 0px' });
+			galleryObserver.observe(gallery);
+		} else {
+			startGallery();
+		}
 
 		function loadGallery(images) {
 			// Duplicate images 3x for seamless infinite loop
@@ -669,6 +606,8 @@
 				const img = document.createElement('img');
 				img.src = src;
 				img.alt = 'Lab activity';
+				img.loading = 'lazy';
+				img.decoding = 'async';
 				gallery.appendChild(img);
 			});
 

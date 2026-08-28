@@ -60,3 +60,22 @@ jQuery(document).ready(function ($) {
         });
     }
 });
+
+// Give each secondary page banner a random research image on every visit.
+(function () {
+    var secondaryBanner = document.querySelector('#head.secondary');
+    if (!secondaryBanner) return;
+
+    var homepageImages = [
+		'assets/homepage_images/eee1.webp',
+		'assets/homepage_images/hive1.webp',
+		'assets/homepage_images/hive2.webp',
+		'assets/homepage_images/hive3.webp',
+		'assets/homepage_images/robot1.webp'
+    ];
+    var selectedImage = homepageImages[Math.floor(Math.random() * homepageImages.length)];
+
+    secondaryBanner.style.backgroundImage = 'url("' + selectedImage + '")';
+    secondaryBanner.style.backgroundPosition = 'center';
+    secondaryBanner.style.backgroundSize = 'cover';
+})();

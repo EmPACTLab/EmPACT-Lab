@@ -22,7 +22,7 @@ function initialize() {
         return null;
       }
 
-      return ['http://www.gstatic.com/io2010maps/tiles/5/L2_',
+      return ['https://www.gstatic.com/io2010maps/tiles/5/L2_',
           zoom, '_', coord.x, '_', coord.y, '.png'].join('');
     },
     tileSize: new google.maps.Size(256, 256)

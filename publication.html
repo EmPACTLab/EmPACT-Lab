@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Publications - Embodied Perception and Interaction Lab (EmPACT) Lab</title>
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.css">
@@ -63,6 +63,51 @@
 			}
 		}
 	</style>
+	<style>
+		.publication-year { margin: 0 0 24px; background: #fff; }
+		.publication-year-toggle { width: 100%; display: flex; align-items: center; gap: 14px; padding: 12px 0 16px; border: 0; border-bottom: 2px solid #9f1d28; background: #fff; color: #222; text-align: left; cursor: pointer; }
+		.publication-year-title { font-size: 22px; font-weight: 700; color: #9f1d28; }
+		.publication-year-count { font-size: 13px; color: #777; }
+		.publication-year-chevron { margin-left: auto; color: #9f1d28; }
+		.publication-year-toggle[aria-expanded="true"] .publication-year-chevron { transform: rotate(180deg); }
+		.publication-year-content { padding: 0 0 16px 22px; }
+		.publication-card { display: block; padding: 18px 20px; margin: 14px 0; color: inherit; text-decoration: none; border: 1px solid #e1e1e1; border-left: 3px solid #9f1d28; border-radius: 5px; background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, .05); }
+		/* The search script uses the native hidden attribute; preserve it over the card display rule above. */
+		.publication-card[hidden], .publication-year[hidden] { display: none !important; }
+		.publication-card:hover, .publication-card:focus { color: inherit; text-decoration: none; }
+		.publication-card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-bottom: 9px; }
+		.publication-card-venue { display: inline-block; padding: 4px 8px; border-radius: 3px; background: #f7e8e9; color: #9f1d28; font-size: 12px; font-weight: 700; }
+		.publication-card-mention { display: inline-block; padding: 4px 8px; border-radius: 3px; background: #e7f5ec; color: #1f7a45; font-size: 12px; font-weight: 700; }
+		.publication-card-title { margin: 0 0 7px; color: #222; font-size: 17px; font-weight: 700; line-height: 1.4; }
+		.publication-card-authors { margin: 0; color: #666; font-size: 14px; line-height: 1.55; }
+		.publication-card-link { display: inline-block; margin-top: 10px; color: #9f1d28; font-size: 12px; font-weight: 700; }
+		.publication-card-link .fa { margin-left: 4px; }
+		.publication-card--unlinked { opacity: .75; }
+		.publication-status { padding: 24px; margin: 0; color: #666; text-align: center; }
+		.publication-status--error { color: #9f1d28; }
+		.publication-search { margin: 28px 0 22px; }
+		.publication-filters { display: flex; gap: 14px; margin: 0 0 22px; }
+		.publication-filter { flex: 1; }
+		.publication-filter--clear { flex: 0 0 auto; align-self: flex-end; }
+		.publication-clear { height: 42px; padding: 0 17px; border: 1px solid #9f1d28; border-radius: 4px; background: #fff; color: #9f1d28; font-size: 14px; font-weight: 700; }
+		.publication-search label { display: block; margin-bottom: 8px; color: #444; font-size: 14px; font-weight: 700; }
+		.publication-search-wrap { position: relative; }
+		.publication-search-wrap .fa { position: absolute; top: 13px; left: 14px; color: #9f1d28; }
+		#publication-search { width: 100%; height: 44px; padding: 10px 14px 10px 39px; border: 1px solid #d8d8d8; border-radius: 4px; color: #333; font-size: 14px; }
+		#publication-search:focus { outline: 0; border-color: #9f1d28; }
+		.publication-filter select { width: 100%; height: 42px; padding: 8px 10px; border: 1px solid #d8d8d8; border-radius: 4px; background: #fff; color: #333; font-size: 14px; }
+		.publication-filter select:focus { outline: 0; border-color: #9f1d28; }
+		@media (max-width: 600px) {
+			.publication-year-toggle { padding: 12px 0 14px; }
+			.publication-year-title { font-size: 20px; }
+			.publication-year-content { padding: 0 0 12px 12px; }
+			.publication-card { padding: 16px; }
+			.publication-filters { display: block; }
+			.publication-filter { margin-bottom: 14px; }
+			.publication-filter--clear { margin-bottom: 0; }
+			.publication-clear { width: 100%; }
+		}
+	</style>
 </head>
 <body>
 	<div class="navbar navbar-inverse">
@@ -74,7 +119,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="EmPACT Lab"></a>
+				<a class="navbar-brand" href="index.html"><img src="assets/images/empact_logo.png" alt="EmPACT Lab"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-main">
 				<ul class="nav navbar-nav pull-right mainNav">
@@ -94,19 +139,14 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<h1>Publications</h1>
-					<p>We aim to publish the most top-tier research in world-class conferences and journals</p>
+					<p>Recent research from EmPACT Lab.</p>
 
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<!-- 
-	=============================================
-	PUBLICATIONS DATABASE - Edit entries here!
-	=============================================
-	Format: { date, venue, title, authors, link }
-	-->
+	<!-- Publications are maintained in Supabase. The legacy array below is not displayed. -->
 
 	<script>
 		// ==========================================================
@@ -210,10 +250,24 @@
 		}
 
 		// Load publications when page loads
-		document.addEventListener('DOMContentLoaded', generatePublicationsHTML);
+		// Publications are loaded from Supabase by publications-from-sheet.js.
 	</script>
+    <script src="assets/js/publications-from-sheet.js?v=20260829-13"></script>
 
 	<section class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="publication-search">
+					<label for="publication-search">Search by paper title</label>
+					<div class="publication-search-wrap"><i class="fa fa-search" aria-hidden="true"></i><input id="publication-search" type="search" placeholder="Search by paper title" autocomplete="off"></div>
+				</div>
+				<div class="publication-filters" aria-label="Publication filters">
+					<div class="publication-filter"><label for="publication-topic">Topic</label><select id="publication-topic"><option>Loading topics…</option></select></div>
+					<div class="publication-filter"><label for="publication-subtopic">Sub-topic</label><select id="publication-subtopic"><option>Loading sub-topics…</option></select></div>
+					<div class="publication-filter publication-filter--clear"><button id="publication-clear" class="publication-clear" type="button">Clear filters</button></div>
+				</div>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-md-12">
 				
@@ -223,22 +277,9 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-md-12 text-center" style="margin-top: 40px;">
-				<h3>For complete publication details</h3>
-				<p style="margin-bottom: 20px;">Visit our research page or contact us for more information</p>
-				<a href="contact.html" class="btn btn-action btn-lg">Contact Us</a>
-			</div>
-		</div>
 	</section>
 
 	<footer id="footer">
-		<div class="container">
-			<div class="social text-center">
-				<a href="https://www.linkedin.com/in/addison-lin-wang-62542b222/"><i class="fa fa-linkedin"></i></a>
-				<a href="https://github.com/empactlab"><i class="fa fa-github"></i></a>
-			</div>
-		</div>
 		<div class="footer2">
 			<div class="container">
 				<div class="row">
@@ -256,15 +297,15 @@
 					</div>
 					<div class="col-md-12 panel">
 						<div class="panel-body">
-							<p class="text-right">Copyright &copy; 2025 Embodied Perception and Interaction Lab (EmPACT) Lab, NTU Singapore</p>
+							<p class="text-right">Copyright &copy; 2026 EmPACT Lab @ NTU Singapore</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</footer>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="assets/js/custom.js"></script>
 	
 	<!-- Custom Mobile Navbar Script -->
