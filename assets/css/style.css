@@ -255,6 +255,14 @@ border-radius: 5px;
 .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > .open ul > a {
 	text-align: left;
 }
+
+/* Give the lab mark and navigation a wider, more balanced header on desktop. */
+@media (min-width: 768px) {
+	.navbar-inverse > .container {
+		width: 90%;
+		max-width: 1500px;
+	}
+}
 /* Highlights*/
 .highlight {
 	margin-top: 40px;
