@@ -58,16 +58,24 @@
         const venue = escapeHTML(displayVenue(record));
         const authors = escapeHTML(record.Authors);
         const specialMention = escapeHTML(record['Special Mentions']);
+        const category = escapeHTML(record.Category);
+        const subcategory = escapeHTML(record['Sub Category']);
         const hasPaperLink = isLink(record.Link);
         const searchTitle = escapeHTML(text(record['Paper Name']).toLowerCase());
         const topic = escapeHTML(text(record.Category).toLowerCase());
         const subtopic = escapeHTML(text(record['Sub Category']).toLowerCase());
+        const tags = [
+            category ? '<span class="publication-card-tag">' + category + '</span>' : '',
+            subcategory ? '<span class="publication-card-tag">' + subcategory + '</span>' : ''
+        ].join('');
         const content =
             '<div class="publication-card-meta"><span class="publication-card-venue">' + venue + '</span>' +
             (specialMention ? '<span class="publication-card-mention">' + specialMention + '</span>' : '') + '</div>' +
             '<h3 class="publication-card-title">' + title + '</h3>' +
             '<p class="publication-card-authors">' + authors + '</p>' +
-            (hasPaperLink ? '<span class="publication-card-link">Open Paper <i class="fa fa-external-link" aria-hidden="true"></i></span>' : '');
+            '<div class="publication-card-actions">' +
+            (hasPaperLink ? '<span class="publication-card-link">Open Paper <i class="fa fa-external-link" aria-hidden="true"></i></span>' : '') +
+            tags + '</div>';
 
         if (hasPaperLink) {
             return '<a class="publication-card" data-title="' + searchTitle + '" data-topic="' + topic + '" data-subtopic="' + subtopic + '" href="' + escapeHTML(record.Link) + '" target="_blank" rel="noopener noreferrer">' + content + '</a>';

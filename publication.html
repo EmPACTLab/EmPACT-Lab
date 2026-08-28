@@ -81,8 +81,10 @@
 		.publication-card-mention { display: inline-block; padding: 4px 8px; border-radius: 3px; background: #e7f5ec; color: #1f7a45; font-size: 12px; font-weight: 700; }
 		.publication-card-title { margin: 0 0 7px; color: #222; font-size: 17px; font-weight: 700; line-height: 1.4; }
 		.publication-card-authors { margin: 0; color: #666; font-size: 14px; line-height: 1.55; }
-		.publication-card-link { display: inline-block; margin-top: 10px; color: #9f1d28; font-size: 12px; font-weight: 700; }
+		.publication-card-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 6px; margin-top: 10px; }
+		.publication-card-link { display: inline-block; margin-right: auto; color: #9f1d28; font-size: 12px; font-weight: 700; }
 		.publication-card-link .fa { margin-left: 4px; }
+		.publication-card-tag { display: inline-block; padding: 3px 7px; border: 1px solid #e0e0e0; border-radius: 3px; background: #f3f3f3; color: #666; font-size: 11px; font-weight: 600; line-height: 1.25; }
 		.publication-card--unlinked { opacity: .75; }
 		.publication-status { padding: 24px; margin: 0; color: #666; text-align: center; }
 		.publication-status--error { color: #9f1d28; }
@@ -147,113 +149,8 @@
 		</div>
 	</header>
 
-	<!-- Publications are maintained in Supabase. The legacy array below is not displayed. -->
-
-	<script>
-		// ==========================================================
-		// PUBLICATIONS DATABASE - Edit this array to add/remove/update publications
-		// ==========================================================
-		const publicationsData = [
-			// 2026 Publications
-			{ date: "2026-01", venue: "AAAI 2026", title: "3 papers accepted to AAAI 2026", authors: "EmPACT Lab Team", link: "#", count: 3 },
-			
-			// 2025 Publications
-			{ date: "2025-12", venue: "Pattern Recognition", title: "Research on semantic segmentation", authors: "EmPACT Lab Team", link: "#" },
-			{ date: "2025-11", venue: "IEEE TMM", title: "Multimedia processing research", authors: "EmPACT Lab Team", link: "#" },
-			{ date: "2025-11", venue: "IEEE TAI", title: "Artificial intelligence research", authors: "EmPACT Lab Team", link: "#" },
-			{ date: "2025-10", venue: "IEEE TPAMI", title: "3 papers accepted to IEEE TPAMI", authors: "EmPACT Lab Team", link: "#", count: 3 },
-			{ date: "2025-09", venue: "IEEE RAL", title: "5 papers accepted to IEEE RAL", authors: "EmPACT Lab Team", link: "#", count: 5 },
-			{ date: "2025-09", venue: "NeurIPS 2025", title: "3 papers accepted to NeurIPS 2025", authors: "EmPACT Lab Team", link: "#", count: 3 },
-			{ date: "2025-08", venue: "ACM MM 2025", title: "Multi-modal AI research", authors: "EmPACT Lab Team", link: "#" },
-			{ date: "2025-07", venue: "ICCV 2025", title: "Omnidirectional sensing research", authors: "EmPACT Lab Team", link: "#" },
-			{ date: "2025-07", venue: "IROS 2025", title: "2 papers accepted to IROS 2025", authors: "EmPACT Lab Team", link: "#", count: 2 },
-			{ date: "2025-06", venue: "CVPR 2025", title: "3 papers accepted to CVPR 2025", authors: "EmPACT Lab Team", link: "#", count: 3 },
-			{ date: "2025-05", venue: "ICRA 2025", title: "3 papers accepted to ICRA 2025", authors: "EmPACT Lab Team", link: "#", count: 3 },
-
-			// 2024 Publications
-			{ date: "2024-10", venue: "Pattern Recognition", title: "Semantic segmentation research", authors: "EmPACT Lab Team", link: "#" },
-			{ date: "2024-09", venue: "NeurIPS 2024", title: "2 papers accepted to NeurIPS 2024", authors: "EmPACT Lab Team", link: "#", count: 2 },
-			{ date: "2024-08", venue: "ACM MM 2024", title: "Multimedia research", authors: "EmPACT Lab Team", link: "#" },
-			{ date: "2024-08", venue: "IEEE TPAMI", title: "2 papers accepted to IEEE TPAMI", authors: "EmPACT Lab Team", link: "#", count: 2 },
-			{ date: "2024-07", venue: "ECCV 2024", title: "6 papers accepted to ECCV 2024", authors: "EmPACT Lab Team", link: "#", count: 6 },
-			{ date: "2024-06", venue: "CVPR 2024", title: "8 papers accepted to CVPR 2024", authors: "EmPACT Lab Team", link: "#", count: 8 },
-			{ date: "2024-05", venue: "ICRA 2024", title: "4 papers accepted to ICRA 2024", authors: "EmPACT Lab Team", link: "#", count: 4 },
-			{ date: "2024-04", venue: "IEEE RAL", title: "3 papers accepted to IEEE RAL", authors: "EmPACT Lab Team", link: "#", count: 3 },
-			
-			// 2023 Publications
-			{ date: "2023-10", venue: "ICCV 2023", title: "5 papers accepted to ICCV 2023", authors: "EmPACT Lab Team", link: "#", count: 5 },
-			{ date: "2023-06", venue: "CVPR 2023", title: "4 papers accepted to CVPR 2023", authors: "EmPACT Lab Team", link: "#", count: 4 },
-			
-			// Previous Publications
-			{ date: "2022-10", venue: "ICCV 2022", title: "Computer vision research", authors: "Previous work", link: "#" },
-			{ date: "2022-10", venue: "ECCV 2022", title: "European computer vision research", authors: "Previous work", link: "#" },
-			{ date: "2022-06", venue: "CVPR 2022", title: "Computer vision research", authors: "Previous work", link: "#" },
-			{ date: "2022-03", venue: "IEEE TPAMI", title: "3 papers accepted to IEEE TPAMI", authors: "Previous work", link: "#", count: 3 },
-			{ date: "2021-06", venue: "IEEE RAL", title: "Robotics and automation research", authors: "Previous work", link: "#" }
-		];
-
-		// Group publications by year
-		function groupByYear(publications) {
-			const grouped = {};
-			publications.forEach(pub => {
-				const year = pub.date.substring(0, 4);
-				if (!grouped[year]) {
-					grouped[year] = [];
-				}
-				grouped[year].push(pub);
-			});
-			return grouped;
-		}
-
-		// Generate publications HTML
-		function generatePublicationsHTML() {
-			const container = document.getElementById('publications-container');
-			const groupedPubs = groupByYear(publicationsData);
-			const years = Object.keys(groupedPubs).sort((a, b) => b - a); // Sort descending
-			
-			let html = '';
-			years.forEach(year => {
-				html += `<div class="year-section"><h3 style="color: #1a1a1a; margin-top: 30px; margin-bottom: 20px; font-weight: 600;">${year}</h3>`;
-				groupedPubs[year].forEach(pub => {
-					html += createPublicationCard(pub);
-				});
-				html += '</div>';
-			});
-			
-			container.innerHTML = html;
-		}
-
-		// Create individual publication card
-		function createPublicationCard(pub) {
-			return `
-				<div class="publication-card" style="background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%); border-radius: 10px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #e8e8e8; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.12)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)';">
-					<div style="display: flex; align-items: flex-start; gap: 20px;">
-						<div style="min-width: 80px;">
-							<span style="display: inline-block; background: linear-gradient(135deg, #dc2626, #ef4444); color: white; padding: 8px 12px; border-radius: 6px; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">${pub.venue}</span>
-						</div>
-						<div style="flex: 1;">
-							<h4 style="margin: 0 0 10px 0; color: #1a1a1a; font-weight: 600; font-size: 17px; line-height: 1.4;">
-								${pub.link && pub.link !== '#' ? `<a href="${pub.link}" target="_blank" style="color: #1a1a1a; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#1a1a1a'">${pub.title}</a>` : pub.title}
-							</h4>
-							<p style="margin: 0 0 8px 0; color: #666; font-size: 14px; line-height: 1.5;">
-								<i class="fa fa-users" style="color: #dc2626; margin-right: 5px;"></i>${pub.authors}
-							</p>
-							<div style="display: flex; align-items: center; gap: 15px;">
-								<span style="color: #888; font-size: 13px;">
-									<i class="fa fa-calendar" style="color: #dc2626; margin-right: 5px;"></i>${pub.date}
-								</span>
-								${pub.link && pub.link !== '#' ? `<a href="${pub.link}" target="_blank" style="color: #dc2626; font-size: 13px; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.color='#ef4444'; this.style.textDecoration='underline';" onmouseout="this.style.color='#dc2626'; this.style.textDecoration='none';"><i class="fa fa-external-link" style="margin-right: 5px;"></i>View Paper</a>` : ''}
-							</div>
-						</div>
-					</div>
-				</div>
-			`;
-		}
-
-		// Load publications when page loads
-		// Publications are loaded from Supabase by publications-from-sheet.js.
-	</script>
-    <script src="assets/js/publications-from-sheet.js?v=20260829-13"></script>
+	<!-- Publication records and filter values load dynamically from Supabase. -->
+    <script src="assets/js/publications-from-sheet.js?v=20260829-14"></script>
 
 	<section class="container">
 		<div class="row">
