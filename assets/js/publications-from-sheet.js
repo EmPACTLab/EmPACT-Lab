@@ -4,6 +4,9 @@
     const supabaseUrl = 'https://usmwruhlclmivyzfucmj.supabase.co';
     const supabasePublishableKey = 'sb_publishable_j1aGA4kD3t_Rk2ckx0n0eQ_N4KQTZz5';
     const publicationsEndpoint = supabaseUrl + '/rest/v1/publications?select=*&order=year.desc,paper_name.asc';
+    const topicDisplayNames = {
+        'neuro- and physics-inspired perception': 'Cognitive, Neuro and Physics-Inspired Perception'
+    };
 
     function text(value) {
         return String(value == null ? '' : value).trim();
@@ -17,6 +20,11 @@
 
     function isLink(url) {
         return /^https?:\/\//i.test(text(url));
+    }
+
+    function displayTopic(value) {
+        const topic = text(value);
+        return topicDisplayNames[topic.toLowerCase()] || topic;
     }
 
     function displayVenue(record) {
@@ -44,7 +52,7 @@
                 Venue: publication.venue,
                 Authors: publication.authors,
                 Link: publication.link,
-                Category: publication.category,
+                Category: displayTopic(publication.category),
                 'Sub Category': publication.sub_category,
                 'Special Mentions': publication.special_mentions
             };
