@@ -9,7 +9,8 @@
  * on-device compute, so the six cards read as six facets of the same
  * research subject rather than six unrelated diagrams:
  *
- *   neuro-physics-perception    A physical stimulus wave (light/sound) passes
+ *   cognitive-neuro-physics-perception
+ *                               A physical stimulus wave (light/sound) passes
  *                               through layered biological receptors, which
  *                               fire spikes along dendrites into the agent's
  *                               perceiving head.
@@ -51,7 +52,15 @@
 (function () {
     'use strict';
 
-    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Research canvases are intentionally animated. This remains false even
+    // when the browser's general reduced-motion preference is enabled.
+    const reduceMotion = false;
+    const requestFrame = window.requestAnimationFrame
+        ? window.requestAnimationFrame.bind(window)
+        : function (callback) { return window.setTimeout(function () { callback(Date.now()); }, 16); };
+    const cancelFrame = window.cancelAnimationFrame
+        ? window.cancelAnimationFrame.bind(window)
+        : window.clearTimeout.bind(window);
     const palette = {
         cyan: '#54d6ff', blue: '#7994ff', violet: '#be8cff', pink: '#ff7eaa', gold: '#ffcc66', mint: '#62e6ba'
     };
@@ -1721,7 +1730,7 @@ function humanAgentInteraction(ctx, width, height, time) {
     // ---------------------------------------------------------------------
 
     const scenes = {
-        'neuro-physics-perception': bioPerception,
+        'cognitive-neuro-physics-perception': bioPerception,
         'multi-sensor-fusion': sensorFusion,
         'spatial-intelligence': spatialIntelligence,
         'edge-ai-embodied-agents': edgeEmbodied,
@@ -1731,7 +1740,7 @@ function humanAgentInteraction(ctx, width, height, time) {
 
     function makeState(topic) {
         const next = random(hash(topic));
-        if (topic === 'neuro-physics-perception') {
+        if (topic === 'cognitive-neuro-physics-perception') {
             return { receptors: [0.28, 0.39, 0.5, 0.61, 0.72] };
         }
         if (topic === 'spatial-intelligence') {
@@ -1757,7 +1766,8 @@ function humanAgentInteraction(ctx, width, height, time) {
         const topic = canvas.getAttribute('data-topic');
         const draw = scenes[topic];
         if (!draw) return null;
-        const context = canvas.getContext('2d');
+        const context = canvas.getContext && canvas.getContext('2d');
+        if (!context) return null;
         const state = makeState(topic);
         let width = 0, height = 0, active = true, frameId = null;
 
@@ -1772,19 +1782,25 @@ function humanAgentInteraction(ctx, width, height, time) {
         }
 
         function render(time) {
-            draw(context, width, height, time, state);
-            if (!reduceMotion && active) frameId = window.requestAnimationFrame(render);
+            frameId = null;
+            try {
+                draw(context, width, height, time, state);
+            } catch (error) {
+                console.error('Research canvas animation error for ' + topic + ':', error);
+                return;
+            }
+            if (!reduceMotion && active) frameId = requestFrame(render);
         }
 
         resize();
         if (reduceMotion) render(0);
-        else frameId = window.requestAnimationFrame(render);
+        else frameId = requestFrame(render);
         window.addEventListener('resize', resize, { passive: true });
 
         return function (visible) {
             active = visible;
-            if (visible && !reduceMotion && !frameId) frameId = window.requestAnimationFrame(render);
-            if (!visible && frameId) { window.cancelAnimationFrame(frameId); frameId = null; }
+            if (visible && !reduceMotion && !frameId) frameId = requestFrame(render);
+            if (!visible && frameId) { cancelFrame(frameId); frameId = null; }
         };
     }
 
