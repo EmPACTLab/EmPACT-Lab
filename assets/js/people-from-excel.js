@@ -6,11 +6,14 @@
     const supabaseUrl = 'https://usmwruhlclmivyzfucmj.supabase.co';
     const supabasePublishableKey = 'sb_publishable_j1aGA4kD3t_Rk2ckx0n0eQ_N4KQTZz5';
     const peopleEndpoint = supabaseUrl + '/rest/v1/people?select=*&order=name.asc';
-    const sectionOrder = [
-        { key: 'Principal Investigator', title: 'Principal Investigator' },
-        { key: 'Research Staff', title: 'Research Staff' },
+    const researchTeamSections = [
+        { key: 'Research Staff', title: 'Research Staffs' },
         { key: 'PhD Students', title: 'PhD Students' },
-        { key: 'Master Students', title: 'Master Students' },
+        { key: 'Visiting PhD Students', title: 'Visiting PhD Students' },
+        { key: 'MEng Students', title: 'MEng Students' }
+    ];
+    const standaloneSections = [
+        { key: 'Master of Science Students', title: 'Master of Science Students' },
         { key: 'Interns and UG Students', title: 'Interns and UG Students' },
         { key: 'Alumni', title: 'Alumni' }
     ];
@@ -99,11 +102,6 @@
 
     function sortPeople(people, section) {
         return people.sort(function (a, b) {
-            if (section === 'PhD Students') {
-                const aIsVisiting = text(a.Role).toLowerCase().indexOf('visiting') !== -1;
-                const bIsVisiting = text(b.Role).toLowerCase().indexOf('visiting') !== -1;
-                if (aIsVisiting !== bIsVisiting) return aIsVisiting ? 1 : -1;
-            }
             return text(a.Name).localeCompare(text(b.Name), undefined, { sensitivity: 'base' });
         });
     }
@@ -112,8 +110,10 @@
         const normalizedRole = text(role).toLowerCase();
         if (normalizedRole.indexOf('professor') !== -1) return 'Principal Investigator';
         if (normalizedRole.indexOf('alumni') !== -1) return 'Alumni';
+        if (normalizedRole.indexOf('visiting') !== -1 && normalizedRole.indexOf('phd') !== -1) return 'Visiting PhD Students';
         if (normalizedRole.indexOf('phd') !== -1) return 'PhD Students';
-        if (normalizedRole.indexOf('msc') !== -1 || normalizedRole.indexOf('m.eng') !== -1 || normalizedRole.indexOf('master') !== -1) return 'Master Students';
+        if (normalizedRole.indexOf('m.eng') !== -1 || normalizedRole.indexOf('meng') !== -1) return 'MEng Students';
+        if (normalizedRole.indexOf('msc') !== -1 || normalizedRole.indexOf('master') !== -1) return 'Master of Science Students';
         if (normalizedRole.indexOf('intern') !== -1 || normalizedRole.indexOf('ug') !== -1 || normalizedRole.indexOf('undergraduate') !== -1) return 'Interns and UG Students';
         return 'Research Staff';
     }
@@ -133,13 +133,20 @@
         principalContainer.innerHTML = principal.length ? createProfessor(principal[0]) : '';
 
         let teamHTML = '';
-        sectionOrder.slice(1).forEach(function (section) {
+        let researchTeamHTML = '';
+        researchTeamSections.forEach(function (section) {
             const group = sortPeople(bySection[section.key] || [], section.key);
             if (!group.length) return;
-            teamHTML += '<div class="col-md-12"><h3 style="margin-top: 30px; margin-bottom: 20px; color: #333;">' + section.title + '</h3></div>';
-            group.forEach(function (person) {
-                teamHTML += section.key === 'Alumni' ? createAlumniCard(person) : createPersonCard(person);
-            });
+            group.forEach(function (person) { researchTeamHTML += createPersonCard(person); });
+        });
+        if (researchTeamHTML) {
+            teamHTML += '<div class="col-md-12"><h2 style="border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 30px;">Research Team</h2></div>' + researchTeamHTML;
+        }
+        standaloneSections.forEach(function (section) {
+            const group = sortPeople(bySection[section.key] || [], section.key);
+            if (!group.length) return;
+            teamHTML += '<div class="col-md-12"><h2 style="border-bottom: 2px solid #333; padding-bottom: 10px; margin: 45px 0 30px;">' + section.title + '</h2></div>';
+            group.forEach(function (person) { teamHTML += section.key === 'Alumni' ? createAlumniCard(person) : createPersonCard(person); });
         });
         teamContainer.innerHTML = teamHTML || '<div class="col-md-12"><p>No active team members are currently listed.</p></div>';
     }
